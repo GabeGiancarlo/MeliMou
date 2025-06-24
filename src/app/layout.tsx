@@ -10,8 +10,8 @@ import { AuthProvider } from "./components/AuthProvider";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Podivate",
-  description: "Podcast creation made easy",
+  title: "MeliMou - Greek Language Learning",
+  description: "Learn Greek through personalized lessons, interactive chat, and AI-powered tutoring",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
