@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
@@ -13,7 +14,9 @@ import {
   Star,
   ArrowRight,
   Calendar,
-  MapPin
+  MapPin,
+  Sparkles,
+  Lock
 } from "lucide-react";
 
 // Mock data for learning paths
@@ -94,6 +97,8 @@ const mockCohorts = [
 ];
 
 export default function LearningPathsPage() {
+  const { data: session } = useSession();
+
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'beginner':
@@ -114,6 +119,41 @@ export default function LearningPathsPage() {
           <h1 className="text-3xl font-bold text-white mb-2">📚 Learning Paths 🍯</h1>
           <p className="text-gray-300">Choose your sweet Greek learning journey - study solo or join a cohort</p>
         </header>
+
+        {/* Preview Banner for Non-Authenticated Users */}
+        {!session && (
+          <Card className="mb-8 bg-gradient-to-r from-purple-600 to-blue-600 border-purple-500">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-white font-bold text-lg mb-2 flex items-center gap-2">
+                    <Sparkles className="h-5 w-5" />
+                    🏛️ Preview Learning Paths
+                  </h3>
+                  <p className="text-purple-100 mb-3">
+                    Explore our structured Greek learning paths! Sign up to track your progress, 
+                    unlock advanced lessons, and join live cohort classes with real instructors.
+                  </p>
+                  <div className="flex gap-3">
+                    <Link href="/auth/signin">
+                      <Button className="bg-white text-purple-600 hover:bg-gray-100 font-semibold">
+                        Join a Path Free 🚀
+                      </Button>
+                    </Link>
+                    <Link href="/subscription">
+                      <Button variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600">
+                        Unlock Premium
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="text-white text-6xl opacity-50">
+                  📚
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Solo Learning Paths */}

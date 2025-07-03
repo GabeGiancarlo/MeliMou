@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
@@ -16,7 +17,9 @@ import {
   CheckCircle,
   Target,
   Users,
-  Calendar
+  Calendar,
+  Sparkles,
+  Lock
 } from "lucide-react";
 
 // Mock certification data
@@ -72,6 +75,8 @@ const mockUpcomingExams = [
 ];
 
 export default function CertificationPage() {
+  const { data: session } = useSession();
+
   const getDifficultyColor = (level: string) => {
     switch (level.toLowerCase()) {
       case 'beginner':
@@ -96,6 +101,41 @@ export default function CertificationPage() {
             Earn recognized certificates as you progress through your sweet Greek learning journey
           </p>
         </header>
+
+        {/* Preview Banner for Non-Authenticated Users */}
+        {!session && (
+          <Card className="mb-8 bg-gradient-to-r from-yellow-600 to-amber-600 border-yellow-500">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-white font-bold text-lg mb-2 flex items-center gap-2">
+                    <Sparkles className="h-5 w-5" />
+                    🏆 Preview Certification System
+                  </h3>
+                  <p className="text-yellow-100 mb-3">
+                    See how our certification system works! Sign up to start earning real certificates, 
+                    track your progress, and showcase your Greek language skills to the world.
+                  </p>
+                  <div className="flex gap-3">
+                    <Link href="/auth/signin">
+                      <Button className="bg-white text-yellow-600 hover:bg-gray-100 font-semibold">
+                        Start Earning Certificates 🚀
+                      </Button>
+                    </Link>
+                    <Link href="/subscription">
+                      <Button variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600">
+                        Upgrade to Premium
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="text-white text-6xl opacity-50">
+                  🏆
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Progress Overview */}

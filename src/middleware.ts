@@ -11,8 +11,18 @@ export default withAuth(
       return NextResponse.next();
     }
 
-    // Allow access to public pages
-    const publicPages = ["/", "/terms", "/privacy"];
+    // Allow access to public pages and feature preview pages
+    const publicPages = [
+      "/", 
+      "/terms", 
+      "/privacy",
+      "/tutor",
+      "/learning-paths", 
+      "/resources",
+      "/certification",
+      "/culture",
+      "/chat"
+    ];
     if (publicPages.includes(pathname)) {
       return NextResponse.next();
     }
@@ -34,8 +44,19 @@ export default withAuth(
       authorized: ({ token, req }) => {
         const { pathname } = req.nextUrl;
         
-        // Allow access to public pages without authentication
-        const publicPages = ["/", "/auth/signin", "/terms", "/privacy"];
+        // Allow access to public pages and feature preview pages without authentication
+        const publicPages = [
+          "/", 
+          "/auth/signin", 
+          "/terms", 
+          "/privacy",
+          "/tutor",
+          "/learning-paths", 
+          "/resources",
+          "/certification",
+          "/culture",
+          "/chat"
+        ];
         if (publicPages.includes(pathname)) {
           return true;
         }

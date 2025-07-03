@@ -4,317 +4,254 @@
 
 **MeliMou** (Μέλι + Mouse = Honey Mouse) is a comprehensive Greek language learning platform featuring AI-powered conversations, expert-led cohorts, and personalized learning paths. Built with modern web technologies and a sweet honey-themed design.
 
-## ✨ Recent Updates (Latest Release)
+## ✨ Latest Updates (v2.0 - Sweet Preview Release)
 
-### 🍯 **Honey Branding & UI Overhaul**
-- **New honey emoji favicon** (🍯) replacing the old generic icon
-- **Gold/amber color scheme** with beautiful gradients throughout the UI
-- **"Sweet learning" messaging** emphasizing the honey theme
-- **Enhanced visual identity** with purple + gold color combination
-- **Honey emojis** integrated throughout the interface for cohesive branding
+### 🍯 **Complete Public Access & Preview System**
+- **🚀 No paywall exploration** - All feature pages now accessible without sign-up
+- **✨ Beautiful preview banners** encouraging users to join after exploring
+- **🎨 Consistent honey branding** across every page with 🍯 emojis and gold gradients
+- **🔗 Fully functional feature cards** with working navigation and hover animations
+- **💫 Sweet user journey** from discovery to sign-up to full access
 
-### 🔐 **Enhanced Authentication System**
-- **Removed GitHub OAuth** (replaced with more popular providers)
-- **Added 5 new social login providers:**
-  - 🔴 **Google** - with red hover effects
-  - 🔵 **Facebook** - with blue hover effects  
-  - 🟣 **Instagram** - with purple gradient hover
-  - 🔷 **Twitter/X** - with blue hover effects
-  - 🔵 **LinkedIn** - with professional blue hover
-- **Provider-specific styling** with unique colors and hover animations
-- **Comprehensive OAuth setup** ready for production credentials
+### 🌟 **Enhanced Feature Pages**
+- **🤖 AI Tutor Preview** - Experience demo conversations with intelligent feedback
+- **📚 Learning Paths Explorer** - Browse solo and cohort options before committing
+- **🏆 Certification Showcase** - See the complete certificate tracking system
+- **🏛️ Cultural Immersion** - Explore Greek heritage modules and virtual events
+- **📖 Resource Library** - Preview comprehensive learning materials
+- **💬 Community Chat** - Experience the vibrant learning community
 
-### 🎨 **UI/UX Improvements**
-- **Beautiful sign-in page** with provider-specific colors and icons
-- **Enhanced homepage** with honey-themed CTAs and messaging
-- **Improved feature cards** with emojis and gold accent colors
-- **Better color contrast** and accessibility improvements
-- **Responsive design** optimized for all devices
+### 🔐 **Smart Authentication Flow**
+- **Public exploration** of all features without barriers
+- **Contextual sign-up prompts** when users are ready to commit
+- **5 social login providers** (Google, Facebook, Instagram, Twitter, LinkedIn)
+- **Seamless onboarding** once users decide to join
 
-## 🚀 Features
+### 🎨 **Honey-Themed Design System**
+- **🍯 Golden honey favicon** replacing generic icons
+- **🌈 Purple-to-amber gradients** creating visual consistency
+- **✨ Sparkle animations** and hover effects throughout
+- **🎯 Sweet messaging** emphasizing the honey learning experience
+- **📱 Responsive design** optimized for all devices
 
-### 🤖 **AI-Powered Learning**
-- 24/7 AI tutor for conversation practice
-- Instant pronunciation feedback
-- Personalized difficulty adjustment
-- Natural language processing for Greek
+## 🚀 Core Features
+
+### 🤖 **AI-Powered Greek Tutor**
+- **24/7 conversation practice** with intelligent AI responses
+- **Instant pronunciation feedback** and correction
+- **Adaptive difficulty** based on your skill level
+- **Topic-based sessions** (food, travel, business, culture)
+- **Formality level adjustment** (informal, formal, mixed)
 
 ### 👥 **Live Cohort Classes**
-- Expert Greek instructors
-- Small group sizes (max 8 students)
-- Flexible scheduling
-- Interactive group learning
+- **Expert native instructors** with teaching credentials
+- **Small intimate groups** (maximum 8 students)
+- **Flexible scheduling** across multiple time zones
+- **Interactive learning** with real-time feedback
+- **Peer support system** and study partnerships
 
-### 📚 **Rich Learning Content**
-- Progressive lessons from alphabet to advanced literature
-- Cultural context videos
-- Interactive exercises and assessments
-- Greek mythology and history integration
+### 📚 **Comprehensive Learning Paths**
+- **Structured progression** from alphabet to literature
+- **Self-paced solo learning** or instructor-guided paths
+- **Cultural integration** in every lesson
+- **Interactive exercises** and multimedia content
+- **Progress tracking** with detailed analytics
 
-### 🏆 **Certification & Progress**
-- Official completion certificates
-- Detailed progress tracking and analytics
-- Skill-based assessments
-- Achievement system
+### 🏆 **Professional Certification**
+- **Internationally recognized certificates** for career advancement
+- **Skill-based assessments** and competency tracking
+- **LinkedIn integration** for professional profiles
+- **Portfolio building** with verifiable credentials
+- **Multiple proficiency levels** (A1-C2 European framework)
 
-### 🏛️ **Cultural Immersion**
-- Greek mythology and ancient history
-- Traditional music and arts
-- Regional dialects and customs
-- Cultural context in every lesson
+### 🏛️ **Greek Cultural Immersion**
+- **Ancient mythology** and historical context
+- **Traditional music and arts** appreciation
+- **Regional dialects** and local customs
+- **Virtual cultural events** and festivals
+- **Interactive cultural map** of Greece
 
-### 💬 **Community Features**
-- Active discussion forums
-- Language exchange partner matching
-- 24/7 community support
-- Native speaker connections
+### 💬 **Vibrant Learning Community**
+- **Discussion forums** by skill level and interests
+- **Language exchange** partner matching
+- **Native speaker mentorship** programs
+- **24/7 community support** and encouragement
+- **Study groups** and practice sessions
 
-## 🛠️ Tech Stack
+## 🎯 Subscription Plans (Honey-Sweet Pricing! 🍯)
 
-- **Framework:** Next.js 14+ with App Router
-- **Language:** TypeScript
-- **Database:** SQLite (development) / PostgreSQL (production ready)
-- **ORM:** Drizzle ORM with type-safe queries
-- **Authentication:** NextAuth.js with 5 OAuth providers
-- **Styling:** Tailwind CSS with custom honey/gold theme
-- **UI Components:** Shadcn/ui with custom styling
-- **API:** tRPC for end-to-end type safety
-- **Payments:** Stripe integration (ready for activation)
-
-## 🏗️ Database Schema
-
-Comprehensive 19-table database schema including:
-
-### **Core Tables**
-- `users` - User profiles with onboarding data
-- `accounts` - OAuth account connections
-- `sessions` - User authentication sessions
-- `verificationTokens` - Email verification
-
-### **Learning System**
-- `learningPaths` - Structured learning courses
-- `modules` - Course modules and chapters
-- `lessons` - Individual lesson content
-- `userProgress` - Progress tracking
-- `tutorSessions` - AI tutor interaction logs
-
-### **Subscription System**
-- `subscriptionPlans` - Tiered pricing plans
-- `userSubscriptions` - Active subscriptions
-- `onboardingResponses` - User onboarding data
-
-### **Community Features**
-- `cohorts` - Live learning groups
-- `cohortMembers` - Group membership
-- `messages` - Community messaging
-- `resources` - Learning materials
-- `alerts` - System notifications
-
-## 🎯 Subscription Plans
-
-### 🆓 **Free Plan** - $0/month
-- 3 AI tutor sessions per month
-- Basic alphabet course access
-- Community forum access
-- Progress tracking
-- Basic pronunciation tools
+### 🆓 **Free Forever** - $0/month
+- ✅ **3 AI tutor sessions** per month
+- ✅ **Basic alphabet course** and pronunciation
+- ✅ **Community forum access** and support
+- ✅ **Progress tracking** and achievements
+- ✅ **Cultural exploration** modules
 
 ### 💎 **Pro Plan** - $19/month
-- 50 AI tutor sessions per month
-- Premium learning content
-- Live cohort classes
-- Email support
-- Advanced pronunciation tools
-- Grammar exercises
-- Cultural immersion lessons
+- ✅ **50 AI tutor sessions** per month
+- ✅ **Premium learning content** and advanced lessons
+- ✅ **Live cohort classes** with expert instructors
+- ✅ **Email support** with priority response
+- ✅ **Grammar mastery** tools and exercises
+- ✅ **Cultural immersion** experiences
 
 ### 👑 **Premium Plan** - $39/month
-- Unlimited AI tutor sessions
-- 1-on-1 instruction sessions
-- Certification courses
-- Priority support
-- Business Greek content
-- Ancient Greek introduction
-- Custom learning paths
+- ✅ **Unlimited AI tutor sessions** 24/7
+- ✅ **1-on-1 instructor sessions** for personalized learning
+- ✅ **Professional certification** pathway
+- ✅ **Priority support** with dedicated assistance
+- ✅ **Business Greek** and specialized vocabulary
+- ✅ **Ancient Greek** introduction courses
 
-### 💰 **Annual Plans**
-- **Pro Annual:** $182.40/year (20% savings)
-- **Premium Annual:** $351/year (25% savings)
+### 💰 **Annual Savings**
+- **🌟 Pro Annual:** $182.40/year **(20% savings!)**
+- **🏆 Premium Annual:** $351/year **(25% savings!)**
 
-## 🚀 Getting Started
+## 🛠️ Modern Tech Stack
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-- Git
+- **⚡ Framework:** Next.js 14+ with App Router and React Server Components
+- **🔷 Language:** TypeScript for end-to-end type safety
+- **🗄️ Database:** SQLite (dev) / PostgreSQL (production) with Drizzle ORM
+- **🔐 Authentication:** NextAuth.js with 5 OAuth providers
+- **🎨 Styling:** Tailwind CSS with custom honey/gold design system
+- **🧩 UI Components:** Shadcn/ui with custom honey-themed styling
+- **🔗 API:** tRPC for type-safe client-server communication
+- **💳 Payments:** Stripe integration ready for activation
+- **📱 PWA:** Progressive Web App capabilities for mobile experience
 
-### Installation
+## 🏗️ Robust Database Architecture
 
-1. **Clone the repository**
+**19 comprehensive tables** supporting all platform features:
+
+### **User Management**
+- `users` - Complete user profiles with onboarding preferences
+- `accounts` - OAuth provider account linking
+- `sessions` - Secure session management
+- `verificationTokens` - Email verification system
+
+### **Learning Engine**
+- `learningPaths` - Structured learning curricula
+- `modules` - Course modules and chapters
+- `lessons` - Individual lesson content and media
+- `userProgress` - Detailed progress tracking
+- `tutorSessions` - AI conversation history and analytics
+
+### **Business Logic**
+- `subscriptionPlans` - Flexible pricing tiers
+- `userSubscriptions` - Active subscription management
+- `onboardingResponses` - User preference collection
+
+### **Community Features**
+- `cohorts` - Live learning group management
+- `cohortMembers` - Group membership and roles
+- `messages` - Community messaging system
+- `resources` - Curated learning materials
+- `alerts` - System notifications and updates
+
+## 🚀 Quick Start Guide
+
+### 📋 Prerequisites
+- **Node.js 18+** (LTS recommended)
+- **npm or yarn** package manager
+- **Git** for version control
+
+### ⚡ Lightning-Fast Setup
+
+1. **Clone & Navigate**
    ```bash
    git clone https://github.com/yourusername/melimou.git
    cd melimou
    ```
 
-2. **Install dependencies**
+2. **Install Dependencies**
    ```bash
    npm install
+   # or
+   yarn install
    ```
 
-3. **Set up environment variables**
+3. **Environment Setup**
    ```bash
    cp .env.example .env
    ```
    
-   Update `.env` with your OAuth credentials:
+   **Configure your `.env` file:**
    ```env
    # Database
    DATABASE_URL="file:./sqlite.db"
    
-   # NextAuth
-   NEXTAUTH_SECRET="your-secret-here"
+   # NextAuth Configuration
+   NEXTAUTH_SECRET="your-super-secret-key-here"
    NEXTAUTH_URL="http://localhost:3000"
    
-   # OAuth Providers
+   # OAuth Providers (Optional for development)
    GOOGLE_CLIENT_ID="your-google-client-id"
    GOOGLE_CLIENT_SECRET="your-google-client-secret"
    FACEBOOK_CLIENT_ID="your-facebook-app-id"
    FACEBOOK_CLIENT_SECRET="your-facebook-app-secret"
-   # ... (add other providers)
+   TWITTER_CLIENT_ID="your-twitter-client-id"
+   TWITTER_CLIENT_SECRET="your-twitter-client-secret"
+   INSTAGRAM_CLIENT_ID="your-instagram-client-id"
+   INSTAGRAM_CLIENT_SECRET="your-instagram-client-secret"
+   LINKEDIN_CLIENT_ID="your-linkedin-client-id"
+   LINKEDIN_CLIENT_SECRET="your-linkedin-client-secret"
+   
+   # Stripe (Optional)
+   STRIPE_SECRET_KEY="your-stripe-secret-key"
+   STRIPE_PUBLISHABLE_KEY="your-stripe-publishable-key"
    ```
 
-4. **Set up the database**
+4. **Database Setup**
    ```bash
-   npm run db:generate
-   npm run db:migrate
-   npm run db:seed
+   npm run db:generate  # Generate migrations
+   npm run db:migrate   # Apply migrations
+   npm run db:seed      # Seed with sample data
    ```
 
-5. **Start the development server**
+5. **Launch Development Server**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
-   Navigate to `http://localhost:3000` and enjoy the honey-sweet Greek learning experience! 🍯
+6. **🎉 Start Exploring!**
+   - **Open:** `http://localhost:3000`
+   - **Explore:** All feature pages without sign-up required
+   - **Experience:** The sweet honey-themed learning platform
+   - **Test:** OAuth providers with your credentials
 
-## 🔧 Development Scripts
+## 🌟 Platform Highlights
 
-```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run start        # Start production server
-npm run lint         # Run ESLint
-npm run type-check   # Run TypeScript checks
-npm run db:generate  # Generate database migrations
-npm run db:migrate   # Run database migrations
-npm run db:seed      # Seed database with initial data
-npm run db:studio    # Open Drizzle Studio (database GUI)
-```
+### ✨ **User Experience Excellence**
+- **🚫 No signup barriers** - Explore every feature freely
+- **🍯 Sweet branding** - Consistent honey theme throughout
+- **📱 Mobile-first** - Responsive design for all devices
+- **⚡ Lightning fast** - Optimized performance and loading
 
-## 🔐 OAuth Setup Guide
+### 🎓 **Educational Innovation**
+- **🤖 AI-powered** - Cutting-edge language learning technology
+- **👨‍🏫 Expert instruction** - Native speakers and certified teachers
+- **🏛️ Cultural depth** - Learn language through Greek heritage
+- **🏆 Professional certification** - Career-advancing credentials
 
-### Google OAuth
-1. Go to [Google Cloud Console](https://console.cloud.google.com)
-2. Create a new project or select existing
-3. Enable Google+ API
-4. Create OAuth 2.0 credentials
-5. Add authorized redirect URI: `http://localhost:3000/api/auth/callback/google`
+### 🔧 **Developer Experience**
+- **📝 TypeScript everywhere** - Full type safety
+- **🔗 tRPC integration** - End-to-end type safety
+- **🎨 Tailwind CSS** - Utility-first styling
+- **🧪 Modern tooling** - Latest Next.js features
 
-### Facebook/Instagram OAuth
-1. Visit [Meta for Developers](https://developers.facebook.com)
-2. Create a new app
-3. Add Facebook Login product
-4. Configure Valid OAuth Redirect URIs
-5. Get App ID and App Secret
+## 📸 Screenshots
 
-### Twitter/X OAuth
-1. Go to [Twitter Developer Portal](https://developer.twitter.com)
-2. Create a new app
-3. Enable OAuth 2.0
-4. Set callback URL: `http://localhost:3000/api/auth/callback/twitter`
-
-### LinkedIn OAuth
-1. Visit [LinkedIn Developer Portal](https://developer.linkedin.com)
-2. Create a new app
-3. Add Sign In with LinkedIn product
-4. Configure authorized redirect URLs
-
-## 📂 Project Structure
-
-```
-src/
-├── app/                 # Next.js App Router pages
-│   ├── auth/           # Authentication pages
-│   ├── onboarding/     # User onboarding flow
-│   ├── subscription/   # Subscription management
-│   └── components/     # Page-specific components
-├── components/         # Reusable UI components
-│   ├── ui/            # Shadcn/ui components
-│   ├── auth/          # Authentication components
-│   └── subscription/  # Subscription components
-├── server/            # Backend logic
-│   ├── api/           # tRPC API routes
-│   ├── auth.ts        # NextAuth configuration
-│   └── db/           # Database configuration
-├── lib/              # Utility functions
-├── hooks/            # React hooks
-└── styles/           # Global styles
-```
-
-## 🎨 Design System
-
-### Color Palette
-- **Primary:** Gold/Amber gradients (`from-amber-500 to-yellow-600`)
-- **Secondary:** Purple (`purple-500`, `purple-600`)
-- **Accent:** Various provider-specific colors
-- **Background:** Dark theme with `gray-800/900`
-- **Text:** White and amber for highlights
-
-### Typography
-- **Font:** Geist Sans for modern, clean readability
-- **Headings:** Bold weights with gradient text effects
-- **Body:** Balanced contrast for accessibility
-
-### Icons & Emojis
-- **Honey emoji** (🍯) as primary brand icon
-- **Cultural emojis** throughout (🏛️, 🇬🇷, ✨)
-- **Provider icons** for OAuth buttons
-- **Feature icons** using Lucide React
-
-## 🚀 Deployment
-
-### Prerequisites for Production
-- Real OAuth credentials from all providers
-- Production database (PostgreSQL recommended)
-- Stripe account for payments
-- Domain name and SSL certificate
-
-### Environment Variables (Production)
-```env
-NODE_ENV=production
-DATABASE_URL="postgresql://user:password@host:port/database"
-NEXTAUTH_SECRET="complex-random-string"
-NEXTAUTH_URL="https://yourdomain.com"
-# ... real OAuth credentials
-```
-
-### Recommended Hosting
-- **Vercel** (recommended for Next.js)
-- **Netlify**
-- **Railway**
-- **DigitalOcean App Platform**
+*Coming soon: Beautiful screenshots showcasing the honey-themed interface!*
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions to make MeliMou even sweeter! 🍯
 
-### Development Workflow
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/honey-enhancement`
-3. Make your changes with honey-sweet code 🍯
-4. Commit with descriptive messages
-5. Push and create a Pull Request
+1. **Fork the repository**
+2. **Create your feature branch** (`git checkout -b feature/sweet-new-feature`)
+3. **Commit your changes** (`git commit -m 'Add some sweet feature'`)
+4. **Push to the branch** (`git push origin feature/sweet-new-feature`)
+5. **Open a Pull Request**
 
 ## 📄 License
 
@@ -322,24 +259,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Greek Language Community** for inspiration and feedback
-- **NextAuth.js** for robust authentication
-- **Drizzle ORM** for type-safe database operations
-- **Shadcn/ui** for beautiful UI components
-- **Vercel** for amazing deployment platform
-
-## 📞 Support
-
-- 📧 **Email:** support@melimou.com
-- 💬 **Discord:** [Join our community](https://discord.gg/melimou)
-- 🐦 **Twitter:** [@MeliMouGreek](https://twitter.com/MeliMouGreek)
-- 📖 **Documentation:** [docs.melimou.com](https://docs.melimou.com)
+- **Greek language experts** for cultural authenticity
+- **Next.js team** for the amazing framework
+- **Shadcn** for the beautiful UI components
+- **Our beta testers** for valuable feedback
 
 ---
 
-<div align="center">
-  <h3>🍯 Built with love and honey for the Greek language community 🏛️</h3>
-  <p>
-    <strong>Καλή τύχη με τα ελληνικά! (Good luck with Greek!)</strong>
-  </p>
-</div>
+**🍯 Made with love and honey by the MeliMou team**
+
+*Καλή μάθηση! (Happy Learning!)*

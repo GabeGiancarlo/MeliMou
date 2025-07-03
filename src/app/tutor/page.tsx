@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
@@ -13,7 +15,9 @@ import {
   Settings,
   MessageCircle,
   Volume2,
-  RotateCcw
+  RotateCcw,
+  Sparkles,
+  Lock
 } from "lucide-react";
 
 // Mock conversation data
@@ -46,6 +50,7 @@ const mockMessages = [
 ];
 
 export default function TutorPage() {
+  const { data: session } = useSession();
   const [messages, setMessages] = useState(mockMessages);
   const [newMessage, setNewMessage] = useState("");
   const [isRecording, setIsRecording] = useState(false);
@@ -96,7 +101,7 @@ export default function TutorPage() {
     // TODO: Implement voice recording
   };
 
-  function generateMockResponse(input: string, formality: string) {
+  function generateMockResponse(input: string, formality: "informal" | "formal" | "mixed") {
     const responses = {
       informal: [
         "Ωραία! That's good! Let's try another phrase.",
@@ -116,7 +121,7 @@ export default function TutorPage() {
     };
 
     const levelResponses = responses[formality] || responses.mixed;
-    return levelResponses[Math.floor(Math.random() * levelResponses.length)];
+    return levelResponses[Math.floor(Math.random() * levelResponses.length)] || "Let's continue practicing!";
   }
 
   function getSessionStarter(formality: string, topic: string) {
@@ -128,12 +133,47 @@ export default function TutorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 p-6">
       <div className="mx-auto max-w-6xl">
         <header className="mb-6">
           <h1 className="text-3xl font-bold text-white mb-2">🤖 AI Greek Tutor 🍯</h1>
           <p className="text-gray-300">Practice Greek conversation with your personal AI tutor - where learning is sweet!</p>
         </header>
+
+        {/* Preview Banner for Non-Authenticated Users */}
+        {!session && (
+          <Card className="mb-6 bg-gradient-to-r from-amber-600 to-orange-600 border-amber-500">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-white font-bold text-lg mb-2 flex items-center gap-2">
+                    <Sparkles className="h-5 w-5" />
+                    🍯 Sweet Preview Mode
+                  </h3>
+                  <p className="text-amber-100 mb-3">
+                    You're viewing a demo of our AI Greek Tutor! Sign up to unlock unlimited conversations, 
+                    personalized feedback, and advanced features.
+                  </p>
+                  <div className="flex gap-3">
+                    <Link href="/auth/signin">
+                      <Button className="bg-white text-amber-600 hover:bg-gray-100 font-semibold">
+                        Start Learning Free 🚀
+                      </Button>
+                    </Link>
+                    <Link href="/subscription">
+                      <Button variant="outline" className="border-white text-white hover:bg-white hover:text-amber-600">
+                        View Plans
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="text-white text-6xl opacity-50">
+                  🍯
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         <div className="grid gap-6 lg:grid-cols-4">
           {/* Settings Sidebar */}

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
@@ -17,7 +18,9 @@ import {
   Calendar,
   Users,
   Heart,
-  Clock
+  Clock,
+  Sparkles,
+  Lock
 } from "lucide-react";
 
 // Mock cultural content data
@@ -127,6 +130,8 @@ const culturalHighlights = [
 ];
 
 export default function CulturePage() {
+  const { data: session } = useSession();
+
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty.toLowerCase()) {
       case 'beginner':
