@@ -20,7 +20,7 @@ import { type AdapterAccount } from "next-auth/adapters";
  */
 export const createTable = sqliteTableCreator((name) => `melimou_${name}`);
 
-// User table (extended)
+// User table (extended with onboarding and subscription data)
 export const users = createTable("user", {
   id: text("id", { length: 255 })
     .notNull()
@@ -32,6 +32,24 @@ export const users = createTable("user", {
   image: text("image", { length: 255 }),
   role: text("role", { enum: ["student", "instructor", "admin"] }).notNull().default("student"),
   formalityPreference: text("formality_preference", { enum: ["informal", "formal", "mixed"] }).default("mixed"),
+  
+  // Onboarding information
+  hasCompletedOnboarding: integer("has_completed_onboarding", { mode: "boolean" }).notNull().default(false),
+  greekLevel: text("greek_level", { enum: ["absolute_beginner", "beginner", "elementary", "intermediate", "advanced", "native"] }),
+  learningGoals: text("learning_goals", { mode: "json" }), // Array of goals
+  studyTimePerWeek: integer("study_time_per_week"), // Hours per week
+  previousExperience: text("previous_experience"),
+  interests: text("interests", { mode: "json" }), // Array of interests
+  howHeardAboutUs: text("how_heard_about_us"),
+  wantsPracticeTest: integer("wants_practice_test", { mode: "boolean" }).default(false),
+  
+  // Subscription information  
+  subscriptionTier: text("subscription_tier", { enum: ["free", "pro", "premium"] }).notNull().default("free"),
+  subscriptionStatus: text("subscription_status", { enum: ["active", "inactive", "cancelled", "past_due"] }).default("active"),
+  subscriptionStartDate: integer("subscription_start_date", { mode: "timestamp" }),
+  subscriptionEndDate: integer("subscription_end_date", { mode: "timestamp" }),
+  stripeCustomerId: text("stripe_customer_id", { length: 255 }),
+  
   createdAt: integer("created_at", { mode: "timestamp" })
     .default(sql`(unixepoch())`)
     .notNull(),
@@ -43,6 +61,69 @@ export const users = createTable("user", {
 export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
 
+// Subscription Plans
+export const subscriptionPlans = createTable("subscription_plan", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name", { length: 100 }).notNull(),
+  description: text("description"),
+  price: integer("price").notNull(), // Price in cents
+  currency: text("currency", { length: 3 }).notNull().default("USD"),
+  intervalType: text("interval_type", { enum: ["month", "year"] }).notNull(),
+  intervalCount: integer("interval_count").notNull().default(1),
+  stripePriceId: text("stripe_price_id", { length: 255 }),
+  features: text("features", { mode: "json" }), // Array of features
+  maxSessions: integer("max_sessions").default(-1), // -1 = unlimited
+  maxResources: integer("max_resources").default(-1),
+  isActive: integer("is_active", { mode: "boolean" }).notNull().default(true),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
+export type SubscriptionPlan = InferSelectModel<typeof subscriptionPlans>;
+export type NewSubscriptionPlan = InferInsertModel<typeof subscriptionPlans>;
+
+// User Subscriptions
+export const userSubscriptions = createTable("user_subscription", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: text("user_id", { length: 255 })
+    .notNull()
+    .references(() => users.id),
+  planId: integer("plan_id")
+    .notNull()
+    .references(() => subscriptionPlans.id),
+  stripeSubscriptionId: text("stripe_subscription_id", { length: 255 }),
+  status: text("status", { enum: ["active", "inactive", "cancelled", "past_due", "trialing"] }).notNull(),
+  currentPeriodStart: integer("current_period_start", { mode: "timestamp" }).notNull(),
+  currentPeriodEnd: integer("current_period_end", { mode: "timestamp" }).notNull(),
+  cancelAtPeriodEnd: integer("cancel_at_period_end", { mode: "boolean" }).default(false),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).$onUpdate(
+    () => new Date(),
+  ),
+});
+
+export type UserSubscription = InferSelectModel<typeof userSubscriptions>;
+export type NewUserSubscription = InferInsertModel<typeof userSubscriptions>;
+
+// Onboarding Responses (for analytics and personalization)
+export const onboardingResponses = createTable("onboarding_response", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: text("user_id", { length: 255 })
+    .notNull()
+    .references(() => users.id),
+  questionKey: text("question_key", { length: 100 }).notNull(),
+  response: text("response", { mode: "json" }).notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
+export type OnboardingResponse = InferSelectModel<typeof onboardingResponses>;
+export type NewOnboardingResponse = InferInsertModel<typeof onboardingResponses>;
+
 // Learning Paths
 export const learningPaths = createTable("learning_path", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -50,6 +131,7 @@ export const learningPaths = createTable("learning_path", {
   description: text("description"),
   difficulty: text("difficulty", { enum: ["beginner", "intermediate", "advanced"] }).notNull(),
   isPublic: integer("is_public", { mode: "boolean" }).notNull().default(true),
+  requiredSubscriptionTier: text("required_subscription_tier", { enum: ["free", "pro", "premium"] }).default("free"),
   createdAt: integer("created_at", { mode: "timestamp" })
     .default(sql`(unixepoch())`)
     .notNull(),
@@ -93,6 +175,7 @@ export const lessons = createTable("lesson", {
   content: text("content", { mode: "json" }), // JSON structure for lesson content
   orderIndex: integer("order_index").notNull(),
   estimatedDuration: integer("estimated_duration"), // in minutes
+  requiredSubscriptionTier: text("required_subscription_tier", { enum: ["free", "pro", "premium"] }).default("free"),
   createdAt: integer("created_at", { mode: "timestamp" })
     .default(sql`(unixepoch())`)
     .notNull(),
@@ -118,6 +201,7 @@ export const cohorts = createTable("cohort", {
   startDate: integer("start_date", { mode: "timestamp" }),
   endDate: integer("end_date", { mode: "timestamp" }),
   maxStudents: integer("max_students").default(30),
+  requiredSubscriptionTier: text("required_subscription_tier", { enum: ["free", "pro", "premium"] }).default("pro"),
   createdAt: integer("created_at", { mode: "timestamp" })
     .default(sql`(unixepoch())`)
     .notNull(),
@@ -205,6 +289,7 @@ export const resources = createTable("resource", {
   difficulty: text("difficulty", { enum: ["beginner", "intermediate", "advanced"] }).notNull(),
   tags: text("tags", { mode: "json" }), // JSON array of tags
   isPublic: integer("is_public", { mode: "boolean" }).notNull().default(true),
+  requiredSubscriptionTier: text("required_subscription_tier", { enum: ["free", "pro", "premium"] }).default("free"),
   createdBy: text("created_by", { length: 255 })
     .notNull()
     .references(() => users.id),
@@ -248,6 +333,7 @@ export const tutorSessions = createTable("tutor_session", {
     .references(() => users.id),
   topic: text("topic", { length: 255 }),
   formalityLevel: text("formality_level", { enum: ["informal", "formal", "mixed"] }).notNull().default("mixed"),
+  sessionsUsedThisMonth: integer("sessions_used_this_month").default(0),
   createdAt: integer("created_at", { mode: "timestamp" })
     .default(sql`(unixepoch())`)
     .notNull(),
@@ -343,7 +429,7 @@ export type Post = InferSelectModel<typeof posts>;
 export type NewPost = InferInsertModel<typeof posts>;
 
 // Relations
-export const usersRelations = relations(users, ({ many }) => ({
+export const usersRelations = relations(users, ({ many, one }) => ({
   accounts: many(accounts),
   sessions: many(sessions),
   posts: many(posts),
@@ -352,6 +438,8 @@ export const usersRelations = relations(users, ({ many }) => ({
   userProgress: many(userProgress),
   messages: many(messages),
   resources: many(resources),
+  subscriptions: many(userSubscriptions),
+  onboardingResponses: many(onboardingResponses),
 }));
 
 export const accountsRelations = relations(accounts, ({ one }) => ({
@@ -365,6 +453,28 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
 export const postsRelations = relations(posts, ({ one }) => ({
   createdBy: one(users, {
     fields: [posts.createdBy],
+    references: [users.id],
+  }),
+}));
+
+export const subscriptionPlansRelations = relations(subscriptionPlans, ({ many }) => ({
+  subscriptions: many(userSubscriptions),
+}));
+
+export const userSubscriptionsRelations = relations(userSubscriptions, ({ one }) => ({
+  user: one(users, {
+    fields: [userSubscriptions.userId],
+    references: [users.id],
+  }),
+  plan: one(subscriptionPlans, {
+    fields: [userSubscriptions.planId],
+    references: [subscriptionPlans.id],
+  }),
+}));
+
+export const onboardingResponsesRelations = relations(onboardingResponses, ({ one }) => ({
+  user: one(users, {
+    fields: [onboardingResponses.userId],
     references: [users.id],
   }),
 }));

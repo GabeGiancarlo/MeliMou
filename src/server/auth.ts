@@ -5,8 +5,12 @@ import {
   type NextAuthOptions,
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
-import DiscordProvider from "next-auth/providers/discord";
-import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";
+import InstagramProvider from "next-auth/providers/instagram";
+import TwitterProvider from "next-auth/providers/twitter";
+import LinkedInProvider from "next-auth/providers/linkedin";
+import { eq } from "drizzle-orm";
 
 import { env } from "~/env";
 import { db } from "~/server/db";
@@ -28,14 +32,19 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      role: "admin" | "user";
+      role: "student" | "instructor" | "admin";
+      hasCompletedOnboarding: boolean;
+      subscriptionTier: "free" | "pro" | "premium";
     } & DefaultSession["user"];
   }
 
   interface User {
-    role: "admin" | "user";
+    role: "student" | "instructor" | "admin";
+    hasCompletedOnboarding: boolean;
+    subscriptionTier: "free" | "pro" | "premium";
   }
 }
+
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  *
@@ -49,8 +58,17 @@ export const authOptions: NextAuthOptions = {
         ...session.user,
         id: user.id,
         role: user.role,
+        hasCompletedOnboarding: user.hasCompletedOnboarding,
+        subscriptionTier: user.subscriptionTier,
       },
     }),
+    redirect: ({ url, baseUrl }) => {
+      // Redirect to onboarding if user hasn't completed it
+      if (url === baseUrl && url.includes('callbackUrl=')) {
+        return url;
+      }
+      return baseUrl;
+    },
   },
   adapter: DrizzleAdapter(db, {
     usersTable: users,
@@ -59,23 +77,59 @@ export const authOptions: NextAuthOptions = {
     verificationTokensTable: verificationTokens,
   }) as Adapter,
   providers: [
-    GithubProvider({
-      clientId: env.GITHUB_CLIENT_ID,
-      clientSecret: env.GITHUB_CLIENT_SECRET,
+    GoogleProvider({
+      clientId: env.GOOGLE_CLIENT_ID ?? "",
+      clientSecret: env.GOOGLE_CLIENT_SECRET ?? "",
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code"
+        }
+      }
     }),
-    /**
-     * ...add more providers here.
-     *
-     * Most other providers require a bit more work than the Discord provider. For example, the
-     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
-     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
-     *
-     * @see https://next-auth.js.org/providers/github
-     */
+    FacebookProvider({
+      clientId: env.FACEBOOK_CLIENT_ID ?? "",
+      clientSecret: env.FACEBOOK_CLIENT_SECRET ?? "",
+    }),
+    InstagramProvider({
+      clientId: env.INSTAGRAM_CLIENT_ID ?? "",
+      clientSecret: env.INSTAGRAM_CLIENT_SECRET ?? "",
+    }),
+    TwitterProvider({
+      clientId: env.TWITTER_CLIENT_ID ?? "",
+      clientSecret: env.TWITTER_CLIENT_SECRET ?? "",
+      version: "2.0", // Use Twitter API v2
+    }),
+    LinkedInProvider({
+      clientId: env.LINKEDIN_CLIENT_ID ?? "",
+      clientSecret: env.LINKEDIN_CLIENT_SECRET ?? "",
+      authorization: {
+        params: {
+          scope: "openid profile email",
+        },
+      },
+    }),
   ],
+  pages: {
+    signIn: "/auth/signin",
+    newUser: "/onboarding", // Redirect new users to onboarding
+  },
   session: {
     strategy: "database",
-    maxAge: 7 * 24 * 60 * 60, // 7 days
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  events: {
+    createUser: async ({ user }) => {
+      // Set default values for new users
+      if (user.email && user.id) {
+        await db.update(users).set({
+          role: "student",
+          hasCompletedOnboarding: false,
+          subscriptionTier: "free",
+        }).where(eq(users.id, user.id));
+      }
+    },
   },
 };
 

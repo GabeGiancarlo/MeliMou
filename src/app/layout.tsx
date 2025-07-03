@@ -10,9 +10,12 @@ import { AuthProvider } from "./components/AuthProvider";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "MeliMou - Greek Language Learning",
-  description: "Learn Greek through personalized lessons, interactive chat, and AI-powered tutoring",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  title: "MeliMou 🍯 - Greek Language Learning",
+  description: "Learn Greek through personalized lessons, interactive chat, and AI-powered tutoring. Where language learning meets the sweetness of honey.",
+  icons: [
+    { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
+    { rel: "icon", url: "/favicon.svg" },
+  ],
 };
 
 export default function RootLayout({
