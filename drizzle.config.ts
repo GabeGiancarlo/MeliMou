@@ -1,12 +1,9 @@
 import { type Config } from "drizzle-kit";
 
-import { env } from "~/env";
-
 export default {
   schema: "./src/server/db/schema.ts",
-  dialect: "postgresql",
+  dialect: "sqlite",
   dbCredentials: {
-    url: env.DATABASE_URL,
+    url: "./sqlite.db",
   },
-  tablesFilter: [`next_postgres_*`],
 } satisfies Config;

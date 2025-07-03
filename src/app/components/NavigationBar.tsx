@@ -1,33 +1,43 @@
 "use client";
 
 import Link from "next/link";
-import { signOut, useSession, signIn } from "next-auth/react"; // Assuming you're using NextAuth for authentication
-import { Button } from "~/components/ui/button";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 export function NavigationBar() {
-  const { status } = useSession();
+  const { data: session, status } = useSession();
 
   return (
-    <nav className="flex items-center justify-between p-4 shadow-md bg-gradient-to-b from-[#974cd9] to-[#2e026d] text-white">
+    <nav className="flex items-center justify-between p-4 shadow-md bg-gradient-to-b from-[#974cd9] to-[#2e026d] dark:from-[#6b46c1] dark:to-[#1e1b4b] text-white">
       <Link href="/">
-        <Button variant="ghost" className="text-lg font-bold">
+        <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground dark:hover:bg-white/10 h-9 px-4 py-2 text-lg font-bold">
           Home
-        </Button>
+        </button>
       </Link>
       <div className="space-x-4">
-        {status === "authenticated" ? (
+        {status === "loading" ? (
+          <span className="text-sm opacity-70">Loading...</span>
+        ) : session ? (
           <>
-            <Link href="/dashboard">
-              <Button variant="ghost">Dashboard</Button>
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground dark:hover:bg-white/10 h-9 px-4 py-2"
+            >
+              Dashboard
             </Link>
-            <Button variant="ghost" onClick={() => signOut()}>
+            <button
+              onClick={() => signOut()}
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground dark:hover:bg-white/10 h-9 px-4 py-2"
+            >
               Logout
-            </Button>
+            </button>
           </>
         ) : (
-          <Button variant="ghost" onClick={() => signIn()}>
+          <button
+            onClick={() => signIn()}
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground dark:hover:bg-white/10 h-9 px-4 py-2"
+          >
             Login
-          </Button>
+          </button>
         )}
       </div>
     </nav>
