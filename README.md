@@ -1,10 +1,37 @@
+## 🎉 LATEST: Sweet Preview Release (v2.0) 
+
+### 🚀 Complete Public Access - No More Signup Walls!
+🍯 **Explore Every Feature Freely** - All feature pages now accessible without sign-up
+🎨 **Beautiful Preview Banners** - Honey-themed CTAs on every page  
+🔗 **Interactive Navigation** - All feature cards properly linked with hover animations
+🎯 **Smart User Journey** - Browse → Experience → Sign-up when ready
+
+---
 # 🍯 MeliMou - Greek Language Learning Platform
 
 > Where language learning meets the sweetness of honey
 
 **MeliMou** (Μέλι + Mouse = Honey Mouse) is a comprehensive Greek language learning platform featuring AI-powered conversations, expert-led cohorts, and personalized learning paths. Built with modern web technologies and a sweet honey-themed design.
 
-## ✨ Latest Updates (v2.0 - Sweet Preview Release)
+## 🎉 NEW: Sweet Preview Release (v2.0) 
+
+### 🚀 **Complete Public Access - No More Signup Walls!**
+🍯 **Explore Every Feature Freely** - We've opened the honey gates! All feature pages are now accessible without requiring sign-up, letting users experience the full sweetness of MeliMou before committing.
+
+🎨 **Beautiful Preview Banners** - Each page features honey-themed preview banners that gently encourage sign-up while showcasing premium benefits with sweet, contextual messaging.
+
+🔗 **Fully Interactive Navigation** - All feature cards on the homepage are now properly linked with smooth hover animations and honey-golden color transitions.
+
+🎯 **Smart User Journey** - Users can:
+- ✨ **Browse all features** without barriers
+- 🍯 **Experience the honey-themed design** throughout
+- 🤖 **Try AI tutor previews** with sample conversations  
+- 📚 **Explore learning paths** and see course structures
+- 🏆 **View certification tracking** and progress systems
+- 🏛️ **Discover cultural immersion** modules and events
+- 💬 **Preview community features** and discussions
+
+## ✨ Recent Updates (Latest Release)
 
 ### 🍯 **Complete Public Access & Preview System**
 - **🚀 No paywall exploration** - All feature pages now accessible without sign-up
