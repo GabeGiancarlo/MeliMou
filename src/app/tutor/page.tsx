@@ -131,23 +131,23 @@ export default function TutorPage() {
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="mx-auto max-w-6xl">
         <header className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">AI Greek Tutor</h1>
-          <p className="text-gray-600">Practice Greek conversation with your personal AI tutor</p>
+          <h1 className="text-3xl font-bold text-white mb-2">🤖 AI Greek Tutor 🍯</h1>
+          <p className="text-gray-300">Practice Greek conversation with your personal AI tutor - where learning is sweet!</p>
         </header>
 
         <div className="grid gap-6 lg:grid-cols-4">
           {/* Settings Sidebar */}
           <div className="lg:col-span-1 space-y-4">
-            <Card>
+            <Card className="bg-gray-800 border-gray-700">
               <CardHeader>
-                <CardTitle className="text-base flex items-center gap-2">
+                <CardTitle className="text-white text-base flex items-center gap-2">
                   <Settings className="h-4 w-4" />
                   Session Settings
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Formality Level</label>
+                  <label className="block text-sm font-medium mb-2 text-gray-300">Formality Level</label>
                   <div className="space-y-2">
                     {["informal", "formal", "mixed"].map((level) => (
                       <Button
@@ -164,11 +164,11 @@ export default function TutorPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Topic</label>
+                  <label className="block text-sm font-medium mb-2 text-gray-300">Topic</label>
                   <select 
                     value={sessionTopic}
                     onChange={(e) => setSessionTopic(e.target.value)}
-                    className="w-full p-2 border rounded-md"
+                    className="w-full p-2 border rounded-md bg-gray-700 text-white border-gray-600"
                   >
                     <option>Basic Conversation</option>
                     <option>Ordering Food</option>
@@ -181,21 +181,20 @@ export default function TutorPage() {
 
                 <Button 
                   onClick={startNewSession}
-                  className="w-full"
-                  variant="outline"
+                  className="w-full bg-amber-600 hover:bg-amber-700"
                 >
                   <RotateCcw className="mr-2 h-4 w-4" />
-                  New Session
+                  New Session 🍯
                 </Button>
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="bg-gray-800 border-gray-700">
               <CardHeader>
-                <CardTitle className="text-base">Quick Tips</CardTitle>
+                <CardTitle className="text-white text-base">🍯 Sweet Tips</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="text-sm space-y-2 text-gray-600">
+                <ul className="text-sm space-y-2 text-gray-300">
                   <li>• Speak clearly and slowly</li>
                   <li>• Don't worry about mistakes</li>
                   <li>• Try to use Greek as much as possible</li>
@@ -207,12 +206,12 @@ export default function TutorPage() {
 
           {/* Chat Interface */}
           <div className="lg:col-span-3">
-            <Card className="h-[600px] flex flex-col">
-              <CardHeader className="border-b">
+            <Card className="h-[600px] flex flex-col bg-gray-800 border-gray-700">
+              <CardHeader className="border-b border-gray-600">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="flex items-center gap-2">
-                    <Bot className="h-5 w-5 text-blue-500" />
-                    Greek Tutor AI
+                  <CardTitle className="flex items-center gap-2 text-white">
+                    <Bot className="h-5 w-5 text-amber-400" />
+                    Greek Tutor AI 🍯
                   </CardTitle>
                   <div className="flex items-center gap-2">
                     <Badge variant="secondary">{formalityLevel}</Badge>

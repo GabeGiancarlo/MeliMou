@@ -108,32 +108,32 @@ export default function LearningPathsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 p-6">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Learning Paths</h1>
-          <p className="text-gray-600">Choose your Greek learning journey - study solo or join a cohort</p>
+          <h1 className="text-3xl font-bold text-white mb-2">📚 Learning Paths 🍯</h1>
+          <p className="text-gray-300">Choose your sweet Greek learning journey - study solo or join a cohort</p>
         </header>
 
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Solo Learning Paths */}
           <div>
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                <BookOpen className="h-6 w-6" />
-                Solo Learning Paths
+              <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                <BookOpen className="h-6 w-6 text-amber-400" />
+                Solo Learning Paths 🍯
               </h2>
-              <p className="text-gray-600">Self-paced courses you can complete at your own schedule</p>
+              <p className="text-gray-300">Self-paced courses you can complete at your own schedule</p>
             </div>
 
             <div className="space-y-4">
               {mockLearningPaths.map((path) => (
-                <Card key={path.id} className="hover:shadow-md transition-shadow">
+                <Card key={path.id} className="hover:shadow-md transition-shadow bg-gray-800 border-gray-700">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
-                        <CardTitle className="text-lg">{path.name}</CardTitle>
-                        <p className="text-sm text-gray-600 mt-1">{path.description}</p>
+                        <CardTitle className="text-lg text-white">{path.name}</CardTitle>
+                        <p className="text-sm text-gray-300 mt-1">{path.description}</p>
                       </div>
                       <Badge className={`text-xs ${getDifficultyColor(path.difficulty)}`}>
                         {path.difficulty}
@@ -142,7 +142,7 @@ export default function LearningPathsPage() {
                   </CardHeader>
                   
                   <CardContent className="space-y-4">
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-4 text-sm text-gray-400">
                       <span className="flex items-center gap-1">
                         <BookOpen className="h-4 w-4" />
                         {path.modules} modules
@@ -167,9 +167,9 @@ export default function LearningPathsPage() {
                       <span className="text-sm font-medium text-green-600">
                         {path.isEnrolled ? 'Enrolled' : 'Free'}
                       </span>
-                      <Button size="sm" variant={path.isEnrolled ? "default" : "outline"} asChild>
+                      <Button size="sm" className={path.isEnrolled ? "bg-amber-600 hover:bg-amber-700" : "bg-purple-600 hover:bg-purple-700"} asChild>
                         <Link href={`/learning-paths/${path.id}`}>
-                          {path.isEnrolled ? 'Continue' : 'Start Free'}
+                          {path.isEnrolled ? 'Continue 🍯' : 'Start Free 🏛️'}
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
@@ -183,11 +183,11 @@ export default function LearningPathsPage() {
           {/* Cohort Learning */}
           <div>
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-                <Users className="h-6 w-6" />
-                Cohort Learning
+              <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                <Users className="h-6 w-6 text-purple-400" />
+                Cohort Learning 🏛️
               </h2>
-              <p className="text-gray-600">Structured group learning with instructor guidance and peer support</p>
+              <p className="text-gray-300">Structured group learning with instructor guidance and peer support</p>
             </div>
 
             <div className="space-y-4">

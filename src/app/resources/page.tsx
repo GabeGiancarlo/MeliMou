@@ -117,19 +117,19 @@ export default function ResourcesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 p-6">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Learning Resources</h1>
-          <p className="text-gray-600">Curated materials to support your Greek learning journey</p>
+          <h1 className="text-3xl font-bold text-white mb-2">📚 Learning Resources 🍯</h1>
+          <p className="text-gray-300">Curated sweet materials to support your Greek learning journey</p>
         </header>
 
         {/* Filters */}
-        <Card className="mb-8">
+        <Card className="mb-8 bg-gray-800 border-gray-700">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Filter className="h-5 w-5" />
-              Filters
+            <CardTitle className="flex items-center gap-2 text-white">
+              <Filter className="h-5 w-5 text-amber-400" />
+              Filters 🍯
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">

@@ -84,107 +84,119 @@ export default async function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Card className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-colors">
-            <CardHeader>
-              <Zap className="h-12 w-12 text-amber-400 mb-4" />
-              <CardTitle className="text-white">🤖 AI-Powered Tutor</CardTitle>
-              <CardDescription className="text-gray-300">
-                Practice conversations 24/7 with our intelligent AI tutor that adapts to your level
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Natural conversation practice</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Instant pronunciation feedback</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Personalized difficulty adjustment</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <Link href="/tutor" className="block transition-transform hover:scale-105">
+            <Card className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-colors cursor-pointer h-full">
+              <CardHeader>
+                <Zap className="h-12 w-12 text-amber-400 mb-4" />
+                <CardTitle className="text-white">🤖 AI-Powered Tutor</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Practice conversations 24/7 with our intelligent AI tutor that adapts to your level
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-gray-300">
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Natural conversation practice</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Instant pronunciation feedback</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Personalized difficulty adjustment</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card className="bg-gray-800 border-gray-700 hover:border-purple-500 transition-colors">
-            <CardHeader>
-              <Users className="h-12 w-12 text-purple-400 mb-4" />
-              <CardTitle className="text-white">👥 Live Cohort Classes</CardTitle>
-              <CardDescription className="text-gray-300">
-                Learn with peers in instructor-led group sessions for real interaction
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Expert Greek instructors</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Small group sizes (max 8)</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Flexible scheduling</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <Link href="/learning-paths" className="block transition-transform hover:scale-105">
+            <Card className="bg-gray-800 border-gray-700 hover:border-purple-500 transition-colors cursor-pointer h-full">
+              <CardHeader>
+                <Users className="h-12 w-12 text-purple-400 mb-4" />
+                <CardTitle className="text-white">👥 Live Cohort Classes</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Learn with peers in instructor-led group sessions for real interaction
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-gray-300">
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Expert Greek instructors</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Small group sizes (max 8)</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Flexible scheduling</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-colors">
-            <CardHeader>
-              <BookOpen className="h-12 w-12 text-amber-400 mb-4" />
-              <CardTitle className="text-white">📚 Rich Learning Content</CardTitle>
-              <CardDescription className="text-gray-300">
-                Comprehensive resources from alphabet basics to advanced literature
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Interactive lessons & exercises</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Cultural context videos</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Progressive difficulty levels</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <Link href="/resources" className="block transition-transform hover:scale-105">
+            <Card className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-colors cursor-pointer h-full">
+              <CardHeader>
+                <BookOpen className="h-12 w-12 text-amber-400 mb-4" />
+                <CardTitle className="text-white">📚 Rich Learning Content</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Comprehensive resources from alphabet basics to advanced literature
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-gray-300">
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Interactive lessons & exercises</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Cultural context videos</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Progressive difficulty levels</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card className="bg-gray-800 border-gray-700 hover:border-yellow-500 transition-colors">
-            <CardHeader>
-              <Trophy className="h-12 w-12 text-yellow-400 mb-4" />
-              <CardTitle className="text-white">🏆 Certification Path</CardTitle>
-              <CardDescription className="text-gray-300">
-                Earn recognized certificates as you progress through your Greek journey
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Official completion certificates</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Progress tracking & analytics</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Skill-based assessments</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <Link href="/certification" className="block transition-transform hover:scale-105">
+            <Card className="bg-gray-800 border-gray-700 hover:border-yellow-500 transition-colors cursor-pointer h-full">
+              <CardHeader>
+                <Trophy className="h-12 w-12 text-yellow-400 mb-4" />
+                <CardTitle className="text-white">🏆 Certification Path</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Earn recognized certificates as you progress through your Greek journey
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-gray-300">
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Official completion certificates</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Progress tracking & analytics</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Skill-based assessments</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card className="bg-gray-800 border-gray-700 hover:border-purple-500 transition-colors">
-            <CardHeader>
-              <Globe className="h-12 w-12 text-purple-400 mb-4" />
-              <CardTitle className="text-white">🏛️ Cultural Immersion</CardTitle>
-              <CardDescription className="text-gray-300">
-                Dive deep into Greek culture, history, and traditions while learning
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Greek mythology & history</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Traditional music & arts</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Regional dialects & customs</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <Link href="/culture" className="block transition-transform hover:scale-105">
+            <Card className="bg-gray-800 border-gray-700 hover:border-purple-500 transition-colors cursor-pointer h-full">
+              <CardHeader>
+                <Globe className="h-12 w-12 text-purple-400 mb-4" />
+                <CardTitle className="text-white">🏛️ Cultural Immersion</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Dive deep into Greek culture, history, and traditions while learning
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-gray-300">
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Greek mythology & history</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Traditional music & arts</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-purple-400 mr-2" />Regional dialects & customs</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-colors">
-            <CardHeader>
-              <MessageCircle className="h-12 w-12 text-amber-400 mb-4" />
-              <CardTitle className="text-white">💬 Community Support</CardTitle>
-              <CardDescription className="text-gray-300">
-                Connect with fellow learners and native speakers in our vibrant community
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Active discussion forums</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Language exchange partners</li>
-                <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />24/7 community support</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <Link href="/chat" className="block transition-transform hover:scale-105">
+            <Card className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-colors cursor-pointer h-full">
+              <CardHeader>
+                <MessageCircle className="h-12 w-12 text-amber-400 mb-4" />
+                <CardTitle className="text-white">💬 Community Support</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Connect with fellow learners and native speakers in our vibrant community
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-gray-300">
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Active discussion forums</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Language exchange partners</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />24/7 community support</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </div>
 
