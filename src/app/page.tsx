@@ -9,7 +9,7 @@ export default async function HomePage() {
   const session = await getServerAuthSession();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900">
+    <div className="min-h-screen honey-bg">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
@@ -17,15 +17,15 @@ export default async function HomePage() {
           <div className="text-center">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               Καλώς ήρθατε στο{" "}
-              <span className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
-                MeliMou 🍯
-              </span>
+                          <span className="honey-text">
+              MeliMou 🍯
+            </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto">
               Master Greek with AI-powered conversations, expert-led cohorts, and personalized learning paths. 
               Join thousands discovering the sweet journey of Greek language learning.
             </p>
-            <p className="text-lg text-amber-200 mb-8 font-medium">
+            <p className="text-lg text-yellow-200 mb-8 font-medium">
               ✨ Where language learning meets the sweetness of honey ✨
             </p>
             
@@ -33,14 +33,14 @@ export default async function HomePage() {
               {session ? (
                 session.user.hasCompletedOnboarding ? (
                   <Link href="/dashboard">
-                    <Button size="lg" className="bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-white text-lg px-8 py-4">
+                    <Button size="lg" className="honey-button text-white text-lg px-8 py-4">
                       🍯 Continue Learning
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
                 ) : (
                   <Link href="/onboarding">
-                    <Button size="lg" className="bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-white text-lg px-8 py-4">
+                    <Button size="lg" className="honey-button text-white text-lg px-8 py-4">
                       🚀 Complete Setup
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
@@ -49,13 +49,13 @@ export default async function HomePage() {
               ) : (
                 <>
                   <Link href="/auth/signin">
-                    <Button size="lg" className="bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-white text-lg px-8 py-4">
+                    <Button size="lg" className="honey-button text-white text-lg px-8 py-4">
                       🍯 Start Learning Greek
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
                   <Link href="/subscription">
-                    <Button size="lg" variant="outline" className="border-amber-400 text-amber-300 hover:bg-amber-500/10 text-lg px-8 py-4">
+                    <Button size="lg" variant="outline" className="border-yellow-400 text-yellow-300 hover:bg-yellow-500/10 text-lg px-8 py-4">
                       💎 View Pricing
                     </Button>
                   </Link>
@@ -64,7 +64,7 @@ export default async function HomePage() {
             </div>
 
             {!session && (
-              <p className="text-amber-200 mt-4">
+              <p className="text-yellow-200 mt-4">
                 🆓 Free plan available • No credit card required
               </p>
             )}
@@ -85,9 +85,9 @@ export default async function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Link href="/tutor" className="block transition-transform hover:scale-105">
-            <Card className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-colors cursor-pointer h-full">
+            <Card className="honey-card hover:border-yellow-500 transition-colors cursor-pointer h-full">
               <CardHeader>
-                <Zap className="h-12 w-12 text-amber-400 mb-4" />
+                <Zap className="h-12 w-12 text-yellow-400 mb-4" />
                 <CardTitle className="text-white">🤖 AI-Powered Tutor</CardTitle>
                 <CardDescription className="text-gray-300">
                   Practice conversations 24/7 with our intelligent AI tutor that adapts to your level
@@ -95,16 +95,16 @@ export default async function HomePage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-gray-300">
-                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Natural conversation practice</li>
-                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Instant pronunciation feedback</li>
-                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Personalized difficulty adjustment</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Natural conversation practice</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Instant pronunciation feedback</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Personalized difficulty adjustment</li>
                 </ul>
               </CardContent>
             </Card>
           </Link>
 
           <Link href="/learning-paths" className="block transition-transform hover:scale-105">
-            <Card className="bg-gray-800 border-gray-700 hover:border-purple-500 transition-colors cursor-pointer h-full">
+            <Card className="honey-card hover:border-purple-500 transition-colors cursor-pointer h-full">
               <CardHeader>
                 <Users className="h-12 w-12 text-purple-400 mb-4" />
                 <CardTitle className="text-white">👥 Live Cohort Classes</CardTitle>
@@ -123,9 +123,9 @@ export default async function HomePage() {
           </Link>
 
           <Link href="/resources" className="block transition-transform hover:scale-105">
-            <Card className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-colors cursor-pointer h-full">
+            <Card className="honey-card hover:border-yellow-500 transition-colors cursor-pointer h-full">
               <CardHeader>
-                <BookOpen className="h-12 w-12 text-amber-400 mb-4" />
+                <BookOpen className="h-12 w-12 text-yellow-400 mb-4" />
                 <CardTitle className="text-white">📚 Rich Learning Content</CardTitle>
                 <CardDescription className="text-gray-300">
                   Comprehensive resources from alphabet basics to advanced literature
@@ -133,16 +133,16 @@ export default async function HomePage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-gray-300">
-                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Interactive lessons & exercises</li>
-                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Cultural context videos</li>
-                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Progressive difficulty levels</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Interactive lessons & exercises</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Cultural context videos</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Progressive difficulty levels</li>
                 </ul>
               </CardContent>
             </Card>
           </Link>
 
           <Link href="/certification" className="block transition-transform hover:scale-105">
-            <Card className="bg-gray-800 border-gray-700 hover:border-yellow-500 transition-colors cursor-pointer h-full">
+            <Card className="honey-card hover:border-yellow-500 transition-colors cursor-pointer h-full">
               <CardHeader>
                 <Trophy className="h-12 w-12 text-yellow-400 mb-4" />
                 <CardTitle className="text-white">🏆 Certification Path</CardTitle>
@@ -161,7 +161,7 @@ export default async function HomePage() {
           </Link>
 
           <Link href="/culture" className="block transition-transform hover:scale-105">
-            <Card className="bg-gray-800 border-gray-700 hover:border-purple-500 transition-colors cursor-pointer h-full">
+            <Card className="honey-card hover:border-purple-500 transition-colors cursor-pointer h-full">
               <CardHeader>
                 <Globe className="h-12 w-12 text-purple-400 mb-4" />
                 <CardTitle className="text-white">🏛️ Cultural Immersion</CardTitle>
@@ -180,9 +180,9 @@ export default async function HomePage() {
           </Link>
 
           <Link href="/chat" className="block transition-transform hover:scale-105">
-            <Card className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-colors cursor-pointer h-full">
+            <Card className="honey-card hover:border-yellow-500 transition-colors cursor-pointer h-full">
               <CardHeader>
-                <MessageCircle className="h-12 w-12 text-amber-400 mb-4" />
+                <MessageCircle className="h-12 w-12 text-yellow-400 mb-4" />
                 <CardTitle className="text-white">💬 Community Support</CardTitle>
                 <CardDescription className="text-gray-300">
                   Connect with fellow learners and native speakers in our vibrant community
@@ -190,9 +190,9 @@ export default async function HomePage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-gray-300">
-                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Active discussion forums</li>
-                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />Language exchange partners</li>
-                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-amber-400 mr-2" />24/7 community support</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Active discussion forums</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />Language exchange partners</li>
+                  <li className="flex items-center"><CheckCircle className="h-4 w-4 text-yellow-400 mr-2" />24/7 community support</li>
                 </ul>
               </CardContent>
             </Card>
@@ -201,7 +201,7 @@ export default async function HomePage() {
       </div>
 
       {/* Greek Culture Section */}
-      <div className="bg-gradient-to-r from-gray-800/50 to-amber-900/20 py-16">
+      <div className="bg-gradient-to-r from-gray-800/50 to-yellow-900/20 py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-4">
@@ -261,7 +261,7 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white">Free</CardTitle>
                 <div className="text-3xl font-bold text-white">$0<span className="text-lg text-gray-400">/month</span></div>
@@ -299,7 +299,7 @@ export default async function HomePage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white">Premium</CardTitle>
                 <div className="text-3xl font-bold text-white">$39<span className="text-lg text-gray-400">/month</span></div>

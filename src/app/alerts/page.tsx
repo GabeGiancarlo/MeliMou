@@ -52,13 +52,13 @@ export default function AlertsPage() {
   const getAlertIcon = (type: string) => {
     switch (type) {
       case 'achievement':
-        return <Star className="h-5 w-5 text-yellow-500" />;
+        return <Star className="h-5 w-5 text-yellow-400" />;
       case 'instructor':
-        return <Info className="h-5 w-5 text-blue-500" />;
+        return <Info className="h-5 w-5 text-yellow-400" />;
       case 'system':
-        return <AlertTriangle className="h-5 w-5 text-orange-500" />;
+        return <AlertTriangle className="h-5 w-5 text-yellow-400" />;
       default:
-        return <Bell className="h-5 w-5 text-gray-500" />;
+        return <Bell className="h-5 w-5 text-gray-400" />;
     }
   };
 
@@ -101,16 +101,16 @@ export default function AlertsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen honey-bg p-6">
       <div className="mx-auto max-w-4xl">
         <header className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Alerts & Notifications</h1>
-              <p className="text-gray-600">Stay updated with your learning progress and announcements</p>
+              <h1 className="text-3xl font-bold text-white mb-2">🍯 Alerts & Notifications</h1>
+              <p className="text-gray-300">Stay updated with your learning progress and announcements</p>
             </div>
             {unreadCount > 0 && (
-              <Button onClick={handleMarkAllAsRead} variant="outline">
+              <Button onClick={handleMarkAllAsRead} variant="outline" className="honey-button">
                 <CheckCircle className="mr-2 h-4 w-4" />
                 Mark All as Read ({unreadCount})
               </Button>
@@ -120,8 +120,8 @@ export default function AlertsPage() {
 
         <div className="space-y-4">
           {mockAlerts.map((alert) => (
-            <Card key={alert.id} className={`transition-all hover:shadow-md ${
-              !alert.isRead ? 'border-l-4 border-l-blue-500 bg-blue-50/30' : ''
+            <Card key={alert.id} className={`honey-card transition-all hover:shadow-lg hover:shadow-yellow-500/20 ${
+              !alert.isRead ? 'honey-border border-l-4' : ''
             }`}>
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
@@ -133,14 +133,14 @@ export default function AlertsPage() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <h3 className="font-semibold text-gray-900">{alert.title}</h3>
+                          <h3 className="font-semibold text-white">{alert.title}</h3>
                           {!alert.isRead && (
-                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                           )}
                         </div>
-                        <p className="text-gray-700 mb-3">{alert.content}</p>
+                        <p className="text-gray-300 mb-3">{alert.content}</p>
                         
-                        <div className="flex items-center gap-3 text-sm text-gray-500">
+                        <div className="flex items-center gap-3 text-sm text-gray-400">
                           <Badge variant={getAlertBadgeColor(alert.type)}>
                             {alert.type.charAt(0).toUpperCase() + alert.type.slice(1)}
                           </Badge>
@@ -155,7 +155,7 @@ export default function AlertsPage() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleMarkAsRead(alert.id)}
-                          className="flex-shrink-0"
+                          className="flex-shrink-0 hover:bg-yellow-500/20 hover:text-yellow-400"
                         >
                           <CheckCircle className="h-4 w-4" />
                         </Button>
@@ -169,11 +169,11 @@ export default function AlertsPage() {
         </div>
 
         {mockAlerts.length === 0 && (
-          <Card>
+          <Card className="honey-card">
             <CardContent className="p-12 text-center">
               <Bell className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No alerts yet</h3>
-              <p className="text-gray-600">You'll see notifications and announcements here when they arrive.</p>
+              <h3 className="text-lg font-medium text-white mb-2">No alerts yet</h3>
+              <p className="text-gray-300">You'll see notifications and announcements here when they arrive.</p>
             </CardContent>
           </Card>
         )}

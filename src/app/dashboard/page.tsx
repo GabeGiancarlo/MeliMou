@@ -47,59 +47,59 @@ export default function DashboardPage() {
   const progressPercentage = (mockProgress.lessonsCompleted / mockProgress.totalLessons) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <div className="min-h-screen honey-bg p-6">
       <div className="mx-auto max-w-7xl">
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Welcome back to your Greek journey!</h1>
-          <p className="text-lg text-gray-600">Keep up the great work! Let's continue learning Greek together.</p>
-        </header>
+                  <header className="mb-8">
+            <h1 className="text-4xl font-bold text-white mb-2">Welcome back to your Greek journey!</h1>
+            <p className="text-lg text-gray-300">Keep up the great work! Let's continue learning Greek together.</p>
+          </header>
 
         {/* Progress Summary */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
-          <Card>
+          <Card className="honey-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Lessons Completed</CardTitle>
-              <BookOpen className="h-4 w-4 text-muted-foreground" />
+              <BookOpen className="h-4 w-4 text-gray-400" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{mockProgress.lessonsCompleted}/{mockProgress.totalLessons}</div>
               <Progress value={progressPercentage} className="mt-2" />
-              <p className="text-xs text-muted-foreground mt-2">
+              <p className="text-xs text-gray-400 mt-2">
                 {progressPercentage.toFixed(0)}% complete
               </p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="honey-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Study Streak</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <TrendingUp className="h-4 w-4 text-gray-400" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{mockProgress.streakDays} days</div>
-              <p className="text-xs text-muted-foreground">Keep it going!</p>
+              <p className="text-xs text-gray-400">Keep it going!</p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="honey-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Hours Studied</CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
+              <Clock className="h-4 w-4 text-gray-400" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{mockProgress.hoursStudied}h</div>
-              <p className="text-xs text-muted-foreground">This month</p>
+              <p className="text-xs text-gray-400">This month</p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="honey-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Level</CardTitle>
-              <Star className="h-4 w-4 text-muted-foreground" />
+              <Star className="h-4 w-4 text-gray-400" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">Beginner</div>
-              <p className="text-xs text-muted-foreground">Level 2</p>
+              <p className="text-xs text-gray-400">Level 2</p>
             </CardContent>
           </Card>
         </div>
@@ -107,7 +107,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Upcoming Lessons */}
           <div className="lg:col-span-2">
-            <Card>
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <BookOpen className="h-5 w-5" />
@@ -116,10 +116,10 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {mockUpcomingLessons.map((lesson) => (
-                  <div key={lesson.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <div key={lesson.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-700 transition-colors">
                     <div>
                       <h4 className="font-medium">{lesson.title}</h4>
-                      <p className="text-sm text-gray-600">{lesson.module}</p>
+                      <p className="text-sm text-gray-300">{lesson.module}</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <Badge variant="secondary" className="flex items-center gap-1">
@@ -144,7 +144,7 @@ export default function DashboardPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Recent Alerts */}
-            <Card>
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Bell className="h-5 w-5" />
@@ -153,14 +153,14 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent className="space-y-3">
                 {mockRecentAlerts.slice(0, 3).map((alert) => (
-                  <div key={alert.id} className={`p-3 border rounded-lg ${!alert.isRead ? 'bg-blue-50 border-blue-200' : 'bg-gray-50'}`}>
+                  <div key={alert.id} className={`p-3 border rounded-lg ${!alert.isRead ? 'bg-yellow-500/10 border-yellow-500/30' : 'bg-gray-700'}`}>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <h5 className="font-medium text-sm">{alert.title}</h5>
-                        <p className="text-xs text-gray-600 mt-1">{alert.content}</p>
+                        <p className="text-xs text-gray-300 mt-1">{alert.content}</p>
                       </div>
                       {!alert.isRead && (
-                        <div className="h-2 w-2 bg-blue-500 rounded-full mt-1"></div>
+                        <div className="h-2 w-2 bg-yellow-500/100 rounded-full mt-1"></div>
                       )}
                     </div>
                   </div>
@@ -172,7 +172,7 @@ export default function DashboardPage() {
             </Card>
 
             {/* Quick Links */}
-            <Card>
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle>Quick Actions</CardTitle>
               </CardHeader>

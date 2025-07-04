@@ -137,7 +137,7 @@ export default function CulturePage() {
       case 'beginner':
         return 'bg-green-100 text-green-800 border-green-200';
       case 'intermediate':
-        return 'bg-amber-100 text-amber-800 border-amber-200';
+        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       case 'advanced':
         return 'bg-red-100 text-red-800 border-red-200';
       default:
@@ -146,7 +146,7 @@ export default function CulturePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 p-4">
+    <div className="min-h-screen honey-bg p-4">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">
@@ -165,7 +165,7 @@ export default function CulturePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {culturalHighlights.map((highlight, index) => (
-              <Card key={index} className="bg-gray-800 border-gray-700 hover:border-amber-500 transition-all duration-300 hover:scale-105">
+              <Card key={index} className="honey-card hover:border-yellow-500 transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl mb-4">{highlight.icon}</div>
                   <h3 className="text-white font-semibold mb-2">{highlight.title}</h3>
@@ -179,7 +179,7 @@ export default function CulturePage() {
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Cultural Modules */}
           <div className="lg:col-span-2 space-y-6">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
                   <Globe className="h-6 w-6 text-purple-400" />
@@ -188,7 +188,7 @@ export default function CulturePage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 {mockCulturalModules.map((module) => (
-                  <div key={module.id} className="p-6 bg-gray-750 rounded-lg border border-gray-600 hover:border-amber-500 transition-colors">
+                  <div key={module.id} className="p-6 bg-gray-750 rounded-lg border border-gray-600 hover:border-yellow-500 transition-colors">
                     <div className="flex items-start gap-4">
                       <div className="text-4xl">{module.image}</div>
                       <div className="flex-1">
@@ -206,7 +206,7 @@ export default function CulturePage() {
                                 {module.duration}
                               </span>
                               <span className="flex items-center gap-1">
-                                <Star className="h-4 w-4 text-amber-400" />
+                                <Star className="h-4 w-4 text-yellow-400" />
                                 {module.rating}
                               </span>
                             </div>
@@ -224,12 +224,12 @@ export default function CulturePage() {
                         </div>
                         
                         <div className="flex items-center justify-between">
-                          <Badge variant="outline" className="text-amber-400 border-amber-400">
+                          <Badge variant="outline" className="text-yellow-400 border-yellow-400">
                             {module.category}
                           </Badge>
                           <Button 
                             size="sm" 
-                            className={module.completed ? "bg-gray-600 hover:bg-gray-700" : "bg-amber-600 hover:bg-amber-700"}
+                            className={module.completed ? "bg-gray-600 hover:bg-gray-700" : "honey-button "}
                           >
                             <Play className="h-4 w-4 mr-1" />
                             {module.completed ? "Review" : "Start"} 🍯
@@ -243,10 +243,10 @@ export default function CulturePage() {
             </Card>
 
             {/* Cultural Events */}
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
-                  <Calendar className="h-6 w-6 text-amber-400" />
+                  <Calendar className="h-6 w-6 text-yellow-400" />
                   Upcoming Cultural Events
                 </CardTitle>
               </CardHeader>
@@ -277,7 +277,7 @@ export default function CulturePage() {
                           {event.type}
                         </Badge>
                         <br />
-                        <Button size="sm" className="bg-amber-600 hover:bg-amber-700">
+                        <Button size="sm" className="honey-button ">
                           Join Event
                         </Button>
                       </div>
@@ -290,38 +290,38 @@ export default function CulturePage() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white">🍯 Sweet Features</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3 text-sm text-gray-300">
                   <div className="flex items-center gap-2">
-                    <Camera className="h-4 w-4 text-amber-400" />
+                    <Camera className="h-4 w-4 text-yellow-400" />
                     <span>Virtual museum tours</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Music className="h-4 w-4 text-amber-400" />
+                    <Music className="h-4 w-4 text-yellow-400" />
                     <span>Traditional music library</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Utensils className="h-4 w-4 text-amber-400" />
+                    <Utensils className="h-4 w-4 text-yellow-400" />
                     <span>Recipe collection</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-amber-400" />
+                    <MapPin className="h-4 w-4 text-yellow-400" />
                     <span>Interactive cultural map</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white">Quick Actions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button className="w-full justify-start bg-amber-600 hover:bg-amber-700" asChild>
+                <Button className="w-full justify-start honey-button " asChild>
                   <Link href="/learning-paths">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Start Cultural Path 🍯
@@ -342,14 +342,14 @@ export default function CulturePage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white">Did You Know? 🤔</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4 text-sm text-gray-300">
                   <div>
-                    <div className="font-medium text-amber-400 mb-1">🍯 Honey in Ancient Greece</div>
+                    <div className="font-medium text-yellow-400 mb-1">🍯 Honey in Ancient Greece</div>
                     <p>Honey was considered "food of the gods" and used in religious ceremonies and as currency!</p>
                   </div>
                   <div>

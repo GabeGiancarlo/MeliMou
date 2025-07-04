@@ -65,7 +65,7 @@ export default function SubscriptionPage() {
 
         {/* Current Subscription Status */}
         {currentSubscription && (
-          <Card className="bg-gray-800 border-gray-700 mb-8">
+          <Card className="honey-card mb-8">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
@@ -97,7 +97,7 @@ export default function SubscriptionPage() {
 
         {/* Usage Limits */}
         {limits && (
-          <Card className="bg-gray-800 border-gray-700 mb-8">
+          <Card className="honey-card mb-8">
             <CardHeader>
               <CardTitle className="text-white">Your Usage This Month</CardTitle>
             </CardHeader>
@@ -206,7 +206,7 @@ export default function SubscriptionPage() {
         </div>
 
         {/* FAQ Section */}
-        <Card className="bg-gray-800 border-gray-700">
+        <Card className="honey-card">
           <CardHeader>
             <CardTitle className="text-white">Frequently Asked Questions</CardTitle>
           </CardHeader>

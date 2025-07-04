@@ -33,6 +33,14 @@
 
 ## ✨ Recent Updates (Latest Release)
 
+### 🐘 **MAJOR: Complete PostgreSQL Migration**
+- **🚀 Fully migrated from SQLite to PostgreSQL** - Production-ready database architecture
+- **📊 19 comprehensive tables** with proper relationships and constraints
+- **🔧 Updated schema** with PostgreSQL-specific optimizations (SERIAL, TIMESTAMP, JSON)
+- **🛠️ New setup scripts** for easy PostgreSQL installation and configuration
+- **🎨 Postico integration** for beautiful database management and visualization
+- **⚡ Enhanced performance** with proper indexing and connection pooling
+
 ### 🍯 **Complete Public Access & Preview System**
 - **🚀 No paywall exploration** - All feature pages now accessible without sign-up
 - **✨ Beautiful preview banners** encouraging users to join after exploring
@@ -138,7 +146,7 @@
 
 - **⚡ Framework:** Next.js 14+ with App Router and React Server Components
 - **🔷 Language:** TypeScript for end-to-end type safety
-- **🗄️ Database:** SQLite (dev) / PostgreSQL (production) with Drizzle ORM
+- **🗄️ Database:** PostgreSQL with Drizzle ORM (fully migrated from SQLite)
 - **🔐 Authentication:** NextAuth.js with 5 OAuth providers
 - **🎨 Styling:** Tailwind CSS with custom honey/gold design system
 - **🧩 UI Components:** Shadcn/ui with custom honey-themed styling
@@ -181,6 +189,7 @@
 - **Node.js 18+** (LTS recommended)
 - **npm or yarn** package manager
 - **Git** for version control
+- **PostgreSQL 15+** (for database)
 
 ### ⚡ Lightning-Fast Setup
 
@@ -199,13 +208,13 @@
 
 3. **Environment Setup**
    ```bash
-   cp .env.example .env
+   cp .env.example .env.local
    ```
    
-   **Configure your `.env` file:**
+   **Configure your `.env.local` file:**
    ```env
-   # Database
-   DATABASE_URL="file:./sqlite.db"
+   # Database (PostgreSQL)
+   DATABASE_URL="postgresql://username:password@localhost:5432/MeliMou?sslmode=disable"
    
    # NextAuth Configuration
    NEXTAUTH_SECRET="your-super-secret-key-here"
@@ -229,10 +238,32 @@
    ```
 
 4. **Database Setup**
+   
+   **🐘 PostgreSQL Setup:**
+   ```bash
+   # Install PostgreSQL (macOS with Homebrew)
+   brew install postgresql@15
+   brew services start postgresql@15
+   
+   # Create database and user
+   psql -U postgres -d postgres -c "CREATE USER yourusername WITH PASSWORD 'yourpassword' CREATEDB SUPERUSER;"
+   psql -U yourusername -d postgres -c "CREATE DATABASE \"MeliMou\";"
+   ```
+   
+   **🔧 Run Migrations:**
    ```bash
    npm run db:generate  # Generate migrations
-   npm run db:migrate   # Apply migrations
-   npm run db:seed      # Seed with sample data
+   npm run db:migrate   # Apply migrations to PostgreSQL
+   npx tsx scripts/create-admin.ts  # Create admin user
+   ```
+   
+   **🍯 Postico Setup (Optional - Database GUI):**
+   ```
+   Host: localhost
+   Port: 5432
+   Database: MeliMou
+   User: yourusername
+   Password: yourpassword
    ```
 
 5. **Launch Development Server**

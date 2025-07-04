@@ -82,7 +82,7 @@ export default function CertificationPage() {
       case 'beginner':
         return 'bg-green-100 text-green-800 border-green-200';
       case 'intermediate':
-        return 'bg-amber-100 text-amber-800 border-amber-200';
+        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       case 'advanced':
         return 'bg-red-100 text-red-800 border-red-200';
       default:
@@ -91,7 +91,7 @@ export default function CertificationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 p-4">
+    <div className="min-h-screen honey-bg p-4">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">
@@ -140,10 +140,10 @@ export default function CertificationPage() {
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Progress Overview */}
           <div className="lg:col-span-2 space-y-6">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
-                  <Trophy className="h-6 w-6 text-amber-400" />
+                  <Trophy className="h-6 w-6 text-yellow-400" />
                   Your Certification Journey
                 </CardTitle>
               </CardHeader>
@@ -175,14 +175,14 @@ export default function CertificationPage() {
                         </p>
                         {cert.badge && (
                           <div className="mt-2">
-                            <span className="text-amber-400 font-medium">{cert.badge}</span>
+                            <span className="text-yellow-400 font-medium">{cert.badge}</span>
                           </div>
                         )}
                       </div>
                       {cert.completed && (
                         <div className="text-center">
-                          <Award className="h-8 w-8 text-amber-400 mx-auto mb-2" />
-                          <Button size="sm" variant="outline" className="text-amber-400 border-amber-400 hover:bg-amber-400 hover:text-gray-900">
+                          <Award className="h-8 w-8 text-yellow-400 mx-auto mb-2" />
+                          <Button size="sm" variant="outline" className="text-yellow-400 border-yellow-400 hover:bg-amber-400 hover:text-gray-900">
                             <Download className="h-4 w-4 mr-1" />
                             Download
                           </Button>
@@ -194,7 +194,7 @@ export default function CertificationPage() {
                       <div className="space-y-3">
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-300">Progress</span>
-                          <span className="text-amber-400">{cert.progress}%</span>
+                          <span className="text-yellow-400">{cert.progress}%</span>
                         </div>
                         <Progress value={cert.progress} className="h-2" />
                         
@@ -212,7 +212,7 @@ export default function CertificationPage() {
                           </div>
                         )}
                         
-                        <Button className="w-full bg-amber-600 hover:bg-amber-700">
+                        <Button className="w-full honey-button ">
                           Continue Learning 🍯
                         </Button>
                       </div>
@@ -243,7 +243,7 @@ export default function CertificationPage() {
             </Card>
 
             {/* Upcoming Exams */}
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
                   <Calendar className="h-6 w-6 text-purple-400" />
@@ -283,38 +283,38 @@ export default function CertificationPage() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white">🍯 Sweet Benefits</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3 text-sm text-gray-300">
                   <div className="flex items-center gap-2">
-                    <Award className="h-4 w-4 text-amber-400" />
+                    <Award className="h-4 w-4 text-yellow-400" />
                     <span>Internationally recognized certificates</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Star className="h-4 w-4 text-amber-400" />
+                    <Star className="h-4 w-4 text-yellow-400" />
                     <span>LinkedIn profile integration</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4 text-amber-400" />
+                    <Users className="h-4 w-4 text-yellow-400" />
                     <span>Community recognition badges</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <BookOpen className="h-4 w-4 text-amber-400" />
+                    <BookOpen className="h-4 w-4 text-yellow-400" />
                     <span>Portfolio building credentials</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white">Quick Actions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button className="w-full justify-start bg-amber-600 hover:bg-amber-700" asChild>
+                <Button className="w-full justify-start honey-button " asChild>
                   <Link href="/learning-paths">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Continue Learning 🍯
@@ -335,7 +335,7 @@ export default function CertificationPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white">Certification Levels</CardTitle>
               </CardHeader>
@@ -345,7 +345,7 @@ export default function CertificationPage() {
                   <p className="text-gray-400">Basic communication and alphabet mastery</p>
                 </div>
                 <div className="text-sm">
-                  <div className="font-medium text-amber-400 mb-1">🏛️ Intermediate (B1-B2)</div>
+                  <div className="font-medium text-yellow-400 mb-1">🏛️ Intermediate (B1-B2)</div>
                   <p className="text-gray-400">Conversational fluency and cultural knowledge</p>
                 </div>
                 <div className="text-sm">

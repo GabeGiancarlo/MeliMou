@@ -4,6 +4,7 @@ import { signIn, getProviders } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
+import { Input } from "~/components/ui/input";
 import { Separator } from "~/components/ui/separator";
 import Link from "next/link";
 
@@ -16,6 +17,10 @@ interface Provider {
 export default function SignInPage() {
   const [providers, setProviders] = useState<Record<string, Provider> | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [credentialsError, setCredentialsError] = useState("");
+  const [showCredentials, setShowCredentials] = useState(false);
 
   useEffect(() => {
     const fetchProviders = async () => {
@@ -34,6 +39,32 @@ export default function SignInPage() {
       });
     } catch (error) {
       console.error("Sign in error:", error);
+      setIsLoading(false);
+    }
+  };
+
+  const handleCredentialsSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setCredentialsError("");
+
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setCredentialsError("Invalid email or password");
+        setIsLoading(false);
+      } else {
+        // Successful login, redirect
+        window.location.href = "/dashboard";
+      }
+    } catch (error) {
+      console.error("Credentials sign in error:", error);
+      setCredentialsError("Something went wrong. Please try again.");
       setIsLoading(false);
     }
   };
@@ -108,18 +139,18 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-gray-800 border-gray-700">
+    <div className="min-h-screen honey-bg flex items-center justify-center p-4">
+      <Card className="w-full max-w-md honey-card">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <div className="h-16 w-16 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
+            <div className="h-16 w-16 honey-gradient rounded-xl flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-2xl">🍯</span>
             </div>
           </div>
-          <CardTitle className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
+          <CardTitle className="text-2xl font-bold honey-text bg-clip-text text-transparent">
             MeliMou 🍯
           </CardTitle>
-          <CardDescription className="text-lg text-amber-200 font-medium">
+          <CardDescription className="text-lg text-yellow-200 font-medium">
             Καλώς ήρθατε! Welcome!
           </CardDescription>
           <CardDescription className="text-gray-300">
@@ -127,29 +158,110 @@ export default function SignInPage() {
           </CardDescription>
         </CardHeader>
         
-        <CardContent className="space-y-3">
-          {providers &&
-            Object.values(providers).map((provider) => (
-              <Button
-                key={provider.name}
-                onClick={() => handleSignIn(provider.id)}
-                disabled={isLoading}
-                className={`w-full h-12 bg-gray-700 text-white border transition-all duration-200 ${getProviderColor(provider.id)}`}
-                variant="outline"
-              >
-                <div className="flex items-center gap-3">
-                  {getProviderIcon(provider.id)}
-                  <span>Continue with {provider.name}</span>
+        <CardContent className="space-y-4">
+          {/* Email/Password Form */}
+          <div className="space-y-4">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setShowCredentials(!showCredentials)}
+              className="w-full h-12 bg-gradient-to-r from-amber-600 to-yellow-600 text-white border-yellow-500 hover:from-amber-700 hover:to-yellow-700"
+            >
+              <div className="flex items-center gap-2">
+                🍯 Sign in with Email & Password
+                <span className={`transform transition-transform ${showCredentials ? 'rotate-180' : ''}`}>
+                  ▼
+                </span>
+              </div>
+            </Button>
+
+            {showCredentials && (
+              <form onSubmit={handleCredentialsSubmit} className="space-y-4 p-4 bg-gray-700/50 rounded-lg border border-yellow-500/20">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-gray-200">
+                    Email
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="gabe@melimou.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="bg-gray-800 border-gray-600 text-white placeholder-gray-400"
+                  />
                 </div>
-              </Button>
-            ))}
+                <div className="space-y-2">
+                  <label htmlFor="password" className="text-sm font-medium text-gray-200">
+                    Password
+                  </label>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="bg-gray-800 border-gray-600 text-white placeholder-gray-400"
+                  />
+                </div>
+                {credentialsError && (
+                  <div className="text-red-400 text-sm bg-red-500/10 p-2 rounded border border-red-500/20">
+                    {credentialsError}
+                  </div>
+                )}
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white"
+                >
+                  {isLoading ? "Signing in..." : "🍯 Sign In"}
+                </Button>
+                <div className="text-xs text-yellow-300 bg-yellow-500/10 p-2 rounded border border-yellow-500/20">
+                  <strong>Admin Login:</strong> gabe@melimou.com / admin123
+                </div>
+              </form>
+            )}
+          </div>
+
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+              <Separator className="w-full bg-gray-600" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-gray-800 px-2 text-gray-400">
+                Or continue with
+              </span>
+            </div>
+          </div>
+
+          {/* OAuth Providers */}
+          <div className="space-y-3">
+            {providers &&
+              Object.values(providers)
+                .filter(provider => provider.id !== "credentials")
+                .map((provider) => (
+                <Button
+                  key={provider.name}
+                  onClick={() => handleSignIn(provider.id)}
+                  disabled={isLoading}
+                  className={`w-full h-12 bg-gray-700 text-white border transition-all duration-200 ${getProviderColor(provider.id)}`}
+                  variant="outline"
+                >
+                  <div className="flex items-center gap-3">
+                    {getProviderIcon(provider.id)}
+                    <span>Continue with {provider.name}</span>
+                  </div>
+                </Button>
+              ))}
+          </div>
           
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <Separator className="w-full bg-gray-600" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-gray-800 px-2 text-amber-300">
+              <span className="bg-gray-800 px-2 text-yellow-300">
                 ✨ Sweet Learning Awaits ✨
               </span>
             </div>
@@ -157,17 +269,17 @@ export default function SignInPage() {
           
           <div className="text-center text-sm text-gray-400">
             By signing in, you agree to our{" "}
-            <Link href="/terms" className="underline text-amber-400 hover:text-amber-300">
+            <Link href="/terms" className="underline text-yellow-400 hover:text-yellow-300">
               Terms of Service
             </Link>{" "}
             and{" "}
-            <Link href="/privacy" className="underline text-amber-400 hover:text-amber-300">
+            <Link href="/privacy" className="underline text-yellow-400 hover:text-yellow-300">
               Privacy Policy
             </Link>
           </div>
           
-          <div className="mt-6 p-4 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-lg border border-amber-500/20">
-            <h3 className="text-sm font-medium text-amber-300 mb-2 flex items-center gap-2">
+          <div className="mt-6 p-4 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 rounded-lg border border-yellow-500/20">
+            <h3 className="text-sm font-medium text-yellow-300 mb-2 flex items-center gap-2">
               🍯 What happens next?
             </h3>
             <ul className="text-xs text-gray-300 space-y-1">

@@ -117,7 +117,7 @@ export default function ResourcesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 p-6">
+    <div className="min-h-screen honey-bg p-6">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">📚 Learning Resources 🍯</h1>
@@ -125,10 +125,10 @@ export default function ResourcesPage() {
         </header>
 
         {/* Filters */}
-        <Card className="mb-8 bg-gray-800 border-gray-700">
+        <Card className="mb-8 honey-card">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-white">
-              <Filter className="h-5 w-5 text-amber-400" />
+              <Filter className="h-5 w-5 text-yellow-400" />
               Filters 🍯
             </CardTitle>
           </CardHeader>

@@ -133,7 +133,7 @@ export default function TutorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 p-6">
+    <div className="min-h-screen honey-bg p-6">
       <div className="mx-auto max-w-6xl">
         <header className="mb-6">
           <h1 className="text-3xl font-bold text-white mb-2">🤖 AI Greek Tutor 🍯</h1>
@@ -142,7 +142,7 @@ export default function TutorPage() {
 
         {/* Preview Banner for Non-Authenticated Users */}
         {!session && (
-          <Card className="mb-6 bg-gradient-to-r from-amber-600 to-orange-600 border-amber-500">
+          <Card className="mb-6 honey-gradient border-yellow-500">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -150,7 +150,7 @@ export default function TutorPage() {
                     <Sparkles className="h-5 w-5" />
                     🍯 Sweet Preview Mode
                   </h3>
-                  <p className="text-amber-100 mb-3">
+                  <p className="text-yellow-100 mb-3">
                     You're viewing a demo of our AI Greek Tutor! Sign up to unlock unlimited conversations, 
                     personalized feedback, and advanced features.
                   </p>
@@ -178,7 +178,7 @@ export default function TutorPage() {
         <div className="grid gap-6 lg:grid-cols-4">
           {/* Settings Sidebar */}
           <div className="lg:col-span-1 space-y-4">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white text-base flex items-center gap-2">
                   <Settings className="h-4 w-4" />
@@ -221,7 +221,7 @@ export default function TutorPage() {
 
                 <Button 
                   onClick={startNewSession}
-                  className="w-full bg-amber-600 hover:bg-amber-700"
+                  className="w-full honey-button "
                 >
                   <RotateCcw className="mr-2 h-4 w-4" />
                   New Session 🍯
@@ -229,7 +229,7 @@ export default function TutorPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="text-white text-base">🍯 Sweet Tips</CardTitle>
               </CardHeader>
@@ -246,11 +246,11 @@ export default function TutorPage() {
 
           {/* Chat Interface */}
           <div className="lg:col-span-3">
-            <Card className="h-[600px] flex flex-col bg-gray-800 border-gray-700">
+            <Card className="h-[600px] flex flex-col honey-card">
               <CardHeader className="border-b border-gray-600">
                 <div className="flex items-center justify-between">
                   <CardTitle className="flex items-center gap-2 text-white">
-                    <Bot className="h-5 w-5 text-amber-400" />
+                    <Bot className="h-5 w-5 text-yellow-400" />
                     Greek Tutor AI 🍯
                   </CardTitle>
                   <div className="flex items-center gap-2">

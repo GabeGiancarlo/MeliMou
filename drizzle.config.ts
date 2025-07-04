@@ -2,8 +2,14 @@ import { type Config } from "drizzle-kit";
 
 export default {
   schema: "./src/server/db/schema.ts",
-  dialect: "sqlite",
+  dialect: "postgresql",
   dbCredentials: {
-    url: "./sqlite.db",
+    host: "localhost",
+    port: 5432,
+    database: "MeliMou",
+    user: "gabegiancarlo",
+    password: "GoalKeeper442*",
+    ssl: false,
   },
+  tablesFilter: ["melimou_*"],
 } satisfies Config;

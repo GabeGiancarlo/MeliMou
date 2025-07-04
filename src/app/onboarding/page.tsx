@@ -185,7 +185,7 @@ export default function OnboardingPage() {
     switch (currentStep) {
       case "welcome":
         return (
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="honey-card">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl text-white mb-4">
                 Καλώς ήρθατε! Welcome to MeliMou! 🇬🇷
@@ -221,7 +221,7 @@ export default function OnboardingPage() {
 
       case "role":
         return (
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="honey-card">
             <CardHeader>
               <CardTitle className="text-white">What brings you to MeliMou?</CardTitle>
               <CardDescription className="text-gray-300">
@@ -254,7 +254,7 @@ export default function OnboardingPage() {
 
       case "level":
         return (
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="honey-card">
             <CardHeader>
               <CardTitle className="text-white">What's your current Greek level?</CardTitle>
               <CardDescription className="text-gray-300">
@@ -289,7 +289,7 @@ export default function OnboardingPage() {
 
       case "goals":
         return (
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="honey-card">
             <CardHeader>
               <CardTitle className="text-white">What are your learning goals?</CardTitle>
               <CardDescription className="text-gray-300">
@@ -324,7 +324,7 @@ export default function OnboardingPage() {
 
       case "schedule":
         return (
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="honey-card">
             <CardHeader>
               <CardTitle className="text-white">How much time can you dedicate to learning?</CardTitle>
               <CardDescription className="text-gray-300">
@@ -362,7 +362,7 @@ export default function OnboardingPage() {
 
       case "interests":
         return (
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="honey-card">
             <CardHeader>
               <CardTitle className="text-white">What aspects of Greek culture interest you?</CardTitle>
               <CardDescription className="text-gray-300">
@@ -397,7 +397,7 @@ export default function OnboardingPage() {
 
       case "background":
         return (
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="honey-card">
             <CardHeader>
               <CardTitle className="text-white">Tell us a bit more</CardTitle>
               <CardDescription className="text-gray-300">
@@ -469,7 +469,7 @@ export default function OnboardingPage() {
 
       case "subscription":
         return (
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="honey-card">
             <CardHeader>
               <CardTitle className="text-white">Choose your learning plan</CardTitle>
               <CardDescription className="text-gray-300">
@@ -524,7 +524,7 @@ export default function OnboardingPage() {
 
       case "complete":
         return (
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="honey-card">
             <CardHeader className="text-center">
               <div className="mx-auto w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-4">
                 <CheckCircle className="h-8 w-8 text-white" />

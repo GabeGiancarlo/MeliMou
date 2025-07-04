@@ -88,7 +88,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 p-6">
+    <div className="min-h-screen honey-bg p-6">
       <div className="mx-auto max-w-7xl">
         <header className="mb-6">
           <h1 className="text-3xl font-bold text-white mb-2">💬 Study Chat 🍯</h1>
@@ -98,10 +98,10 @@ export default function ChatPage() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
           {/* Sidebar - Channels */}
           <div className="lg:col-span-1">
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="honey-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-base text-white">
-                  <Hash className="h-4 w-4 text-amber-400" />
+                  <Hash className="h-4 w-4 text-yellow-400" />
                   Channels 🍯
                 </CardTitle>
               </CardHeader>
@@ -134,11 +134,11 @@ export default function ChatPage() {
 
           {/* Main Chat Area */}
           <div className="lg:col-span-3">
-            <Card className="h-[600px] flex flex-col bg-gray-800 border-gray-700">
+            <Card className="h-[600px] flex flex-col honey-card">
               <CardHeader className="border-b border-gray-600">
                 <div className="flex items-center justify-between">
                   <CardTitle className="flex items-center gap-2 text-white">
-                    <MessageCircle className="h-5 w-5 text-amber-400" />
+                    <MessageCircle className="h-5 w-5 text-yellow-400" />
                     {currentChannel.name} 💬
                   </CardTitle>
                   <div className="flex items-center gap-2 text-sm text-gray-600">

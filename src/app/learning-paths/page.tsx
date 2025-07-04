@@ -113,7 +113,7 @@ export default function LearningPathsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-amber-900 p-6">
+    <div className="min-h-screen honey-bg p-6">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">📚 Learning Paths 🍯</h1>
@@ -160,7 +160,7 @@ export default function LearningPathsPage() {
           <div>
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
-                <BookOpen className="h-6 w-6 text-amber-400" />
+                <BookOpen className="h-6 w-6 text-yellow-400" />
                 Solo Learning Paths 🍯
               </h2>
               <p className="text-gray-300">Self-paced courses you can complete at your own schedule</p>
@@ -168,7 +168,7 @@ export default function LearningPathsPage() {
 
             <div className="space-y-4">
               {mockLearningPaths.map((path) => (
-                <Card key={path.id} className="hover:shadow-md transition-shadow bg-gray-800 border-gray-700">
+                <Card key={path.id} className="hover:shadow-md transition-shadow honey-card">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
@@ -207,7 +207,7 @@ export default function LearningPathsPage() {
                       <span className="text-sm font-medium text-green-600">
                         {path.isEnrolled ? 'Enrolled' : 'Free'}
                       </span>
-                      <Button size="sm" className={path.isEnrolled ? "bg-amber-600 hover:bg-amber-700" : "bg-purple-600 hover:bg-purple-700"} asChild>
+                      <Button size="sm" className={path.isEnrolled ? "honey-button " : "bg-purple-600 hover:bg-purple-700"} asChild>
                         <Link href={`/learning-paths/${path.id}`}>
                           {path.isEnrolled ? 'Continue 🍯' : 'Start Free 🏛️'}
                           <ArrowRight className="ml-2 h-4 w-4" />
