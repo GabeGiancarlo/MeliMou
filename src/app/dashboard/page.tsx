@@ -56,50 +56,50 @@ export default function DashboardPage() {
 
         {/* Progress Summary */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
-          <Card className="honey-card">
+          <Card className="honey-card hex-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Lessons Completed</CardTitle>
-              <BookOpen className="h-4 w-4 text-gray-400" />
+              <CardTitle className="text-sm font-medium text-amber-300">Lessons Completed</CardTitle>
+              <div className="hex-clip hex-icon sm"><BookOpen className="h-4 w-4" /></div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{mockProgress.lessonsCompleted}/{mockProgress.totalLessons}</div>
-              <Progress value={progressPercentage} className="mt-2" />
-              <p className="text-xs text-gray-400 mt-2">
+              <div className="text-2xl font-bold honey-text">{mockProgress.lessonsCompleted}/{mockProgress.totalLessons}</div>
+              <Progress value={progressPercentage} className="mt-3" />
+              <p className="text-xs text-amber-200 mt-2">
                 {progressPercentage.toFixed(0)}% complete
               </p>
             </CardContent>
           </Card>
 
-          <Card className="honey-card">
+          <Card className="honey-card hex-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Study Streak</CardTitle>
-              <TrendingUp className="h-4 w-4 text-gray-400" />
+              <CardTitle className="text-sm font-medium text-amber-300">Study Streak</CardTitle>
+              <div className="hex-clip hex-icon sm"><TrendingUp className="h-4 w-4" /></div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{mockProgress.streakDays} days</div>
-              <p className="text-xs text-gray-400">Keep it going!</p>
+              <div className="text-2xl font-bold honey-text">{mockProgress.streakDays} days</div>
+              <p className="text-xs text-amber-200">Keep it going!</p>
             </CardContent>
           </Card>
 
-          <Card className="honey-card">
+          <Card className="honey-card hex-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Hours Studied</CardTitle>
-              <Clock className="h-4 w-4 text-gray-400" />
+              <CardTitle className="text-sm font-medium text-amber-300">Hours Studied</CardTitle>
+              <div className="hex-clip hex-icon sm"><Clock className="h-4 w-4" /></div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{mockProgress.hoursStudied}h</div>
-              <p className="text-xs text-gray-400">This month</p>
+              <div className="text-2xl font-bold honey-text">{mockProgress.hoursStudied}h</div>
+              <p className="text-xs text-amber-200">This month</p>
             </CardContent>
           </Card>
 
-          <Card className="honey-card">
+          <Card className="honey-card hex-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Level</CardTitle>
-              <Star className="h-4 w-4 text-gray-400" />
+              <CardTitle className="text-sm font-medium text-amber-300">Level</CardTitle>
+              <div className="hex-clip hex-icon sm"><Star className="h-4 w-4" /></div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">Beginner</div>
-              <p className="text-xs text-gray-400">Level 2</p>
+              <div className="text-2xl font-bold honey-text">Beginner</div>
+              <p className="text-xs text-amber-200">Level 2</p>
             </CardContent>
           </Card>
         </div>
@@ -107,23 +107,23 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Upcoming Lessons */}
           <div className="lg:col-span-2">
-            <Card className="honey-card">
+            <Card className="honey-card hex-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5" />
+                  <div className="hex-clip hex-icon sm"><BookOpen className="h-4 w-4" /></div>
                   Upcoming Lessons
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {mockUpcomingLessons.map((lesson) => (
-                  <div key={lesson.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-700 transition-colors">
+                  <div key={lesson.id} className="flex items-center justify-between p-4 rounded-lg transition-colors bg-[#1e1a28]/80 border border-amber-400/20 hover:bg-amber-500/10">
                     <div>
-                      <h4 className="font-medium">{lesson.title}</h4>
+                      <h4 className="font-medium text-amber-200">{lesson.title}</h4>
                       <p className="text-sm text-gray-300">{lesson.module}</p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Badge variant="secondary" className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
+                      <Badge variant="secondary" className="flex items-center gap-1 bg-amber-500/20 text-amber-200 border border-amber-400/30">
+                        <Clock className="h-3 w-3 text-amber-300" />
                         {lesson.estimatedTime}min
                       </Badge>
                       <Button size="sm" asChild>
@@ -144,24 +144,22 @@ export default function DashboardPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Recent Alerts */}
-            <Card className="honey-card">
+            <Card className="honey-card hex-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Bell className="h-5 w-5" />
+                  <div className="hex-clip hex-icon sm"><Bell className="h-4 w-4" /></div>
                   Recent Alerts
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {mockRecentAlerts.slice(0, 3).map((alert) => (
-                  <div key={alert.id} className={`p-3 border rounded-lg ${!alert.isRead ? 'bg-yellow-500/10 border-yellow-500/30' : 'bg-gray-700'}`}>
+                  <div key={alert.id} className={`p-3 border rounded-lg ${!alert.isRead ? 'bg-amber-500/10 border-amber-400/30' : 'bg-gray-700 border-gray-600'}`}>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <h5 className="font-medium text-sm">{alert.title}</h5>
+                        <h5 className="font-medium text-sm text-amber-200">{alert.title}</h5>
                         <p className="text-xs text-gray-300 mt-1">{alert.content}</p>
                       </div>
-                      {!alert.isRead && (
-                        <div className="h-2 w-2 bg-yellow-500/100 rounded-full mt-1"></div>
-                      )}
+                      {!alert.isRead && (<div className="h-2 w-2 bg-amber-400 rounded-full mt-1"></div>)}
                     </div>
                   </div>
                 ))}
@@ -172,32 +170,32 @@ export default function DashboardPage() {
             </Card>
 
             {/* Quick Links */}
-            <Card className="honey-card">
+            <Card className="honey-card hex-card">
               <CardHeader>
                 <CardTitle>Quick Actions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <Button className="w-full justify-start" variant="outline" asChild>
                   <Link href="/tutor">
-                    <Bot className="mr-2 h-4 w-4" />
+                    <Bot className="mr-2 h-4 w-4 text-amber-300" />
                     Practice with AI Tutor
                   </Link>
                 </Button>
                 <Button className="w-full justify-start" variant="outline" asChild>
                   <Link href="/chat">
-                    <MessageCircle className="mr-2 h-4 w-4" />
+                    <MessageCircle className="mr-2 h-4 w-4 text-amber-300" />
                     Join Study Chat
                   </Link>
                 </Button>
                 <Button className="w-full justify-start" variant="outline" asChild>
                   <Link href="/resources">
-                    <BookMarked className="mr-2 h-4 w-4" />
+                    <BookMarked className="mr-2 h-4 w-4 text-amber-300" />
                     Browse Resources
                   </Link>
                 </Button>
                 <Button className="w-full justify-start" variant="outline" asChild>
                   <Link href="/learning-paths">
-                    <Users className="mr-2 h-4 w-4" />
+                    <Users className="mr-2 h-4 w-4 text-amber-300" />
                     Join a Cohort
                   </Link>
                 </Button>

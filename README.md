@@ -1,19 +1,12 @@
-## 🎉 LATEST: Sweet Preview Release (v2.0) 
-
-### 🚀 Complete Public Access - No More Signup Walls!
-🍯 **Explore Every Feature Freely** - All feature pages now accessible without sign-up
-🎨 **Beautiful Preview Banners** - Honey-themed CTAs on every page  
-🔗 **Interactive Navigation** - All feature cards properly linked with hover animations
-🎯 **Smart User Journey** - Browse → Experience → Sign-up when ready
-
----
-# 🍯 MeliMou - Greek Language Learning Platform
+## 🍯 MeliMou – Greek Language Learning Platform
 
 > Where language learning meets the sweetness of honey
 
 **MeliMou** (Μέλι + Mouse = Honey Mouse) is a comprehensive Greek language learning platform featuring AI-powered conversations, expert-led cohorts, and personalized learning paths. Built with modern web technologies and a sweet honey-themed design.
 
-## 🎉 NEW: Sweet Preview Release (v2.0) 
+## 🎉 Latest
+
+### Sweet Preview Release (v2.0)
 
 ### 🚀 **Complete Public Access - No More Signup Walls!**
 🍯 **Explore Every Feature Freely** - We've opened the honey gates! All feature pages are now accessible without requiring sign-up, letting users experience the full sweetness of MeliMou before committing.
@@ -33,7 +26,7 @@
 
 ## ✨ Recent Updates (Latest Release)
 
-### 🐘 **MAJOR: Complete PostgreSQL Migration**
+### 🐘 Major: Complete PostgreSQL Migration
 - **🚀 Fully migrated from SQLite to PostgreSQL** - Production-ready database architecture
 - **📊 19 comprehensive tables** with proper relationships and constraints
 - **🔧 Updated schema** with PostgreSQL-specific optimizations (SERIAL, TIMESTAMP, JSON)
@@ -41,14 +34,14 @@
 - **🎨 Postico integration** for beautiful database management and visualization
 - **⚡ Enhanced performance** with proper indexing and connection pooling
 
-### 🍯 **Complete Public Access & Preview System**
+### 🍯 Complete Public Access & Preview System
 - **🚀 No paywall exploration** - All feature pages now accessible without sign-up
 - **✨ Beautiful preview banners** encouraging users to join after exploring
 - **🎨 Consistent honey branding** across every page with 🍯 emojis and gold gradients
 - **🔗 Fully functional feature cards** with working navigation and hover animations
 - **💫 Sweet user journey** from discovery to sign-up to full access
 
-### 🌟 **Enhanced Feature Pages**
+### 🌟 Enhanced Feature Pages
 - **🤖 AI Tutor Preview** - Experience demo conversations with intelligent feedback
 - **📚 Learning Paths Explorer** - Browse solo and cohort options before committing
 - **🏆 Certification Showcase** - See the complete certificate tracking system
@@ -56,13 +49,17 @@
 - **📖 Resource Library** - Preview comprehensive learning materials
 - **💬 Community Chat** - Experience the vibrant learning community
 
-### 🔐 **Smart Authentication Flow**
+### 🔐 Smart Authentication Flow
 - **Public exploration** of all features without barriers
 - **Contextual sign-up prompts** when users are ready to commit
 - **5 social login providers** (Google, Facebook, Instagram, Twitter, LinkedIn)
 - **Seamless onboarding** once users decide to join
 
-### 🎨 **Honey-Themed Design System**
+### 🎨 Honey-Themed Design System
+Recent visual updates:
+- Beehive (true hex) background pattern with gold accents
+- Brown → honey gradient base for warmth and readability
+- Non‑black card surfaces with subtle honey glow
 - **🍯 Golden honey favicon** replacing generic icons
 - **🌈 Purple-to-amber gradients** creating visual consistency
 - **✨ Sparkle animations** and hover effects throughout
@@ -142,7 +139,7 @@
 - **🌟 Pro Annual:** $182.40/year **(20% savings!)**
 - **🏆 Premium Annual:** $351/year **(25% savings!)**
 
-## 🛠️ Modern Tech Stack
+## 🛠️ Tech Stack
 
 - **⚡ Framework:** Next.js 14+ with App Router and React Server Components
 - **🔷 Language:** TypeScript for end-to-end type safety
@@ -191,7 +188,7 @@
 - **Git** for version control
 - **PostgreSQL 15+** (for database)
 
-### ⚡ Lightning-Fast Setup
+### ⚡ Quick Start
 
 1. **Clone & Navigate**
    ```bash
@@ -214,7 +211,7 @@
    **Configure your `.env.local` file:**
    ```env
    # Database (PostgreSQL)
-   DATABASE_URL="postgresql://username:password@localhost:5432/MeliMou?sslmode=disable"
+    DATABASE_URL="postgresql://username:password@localhost:5432/MeliMou?sslmode=disable"
    
    # NextAuth Configuration
    NEXTAUTH_SECRET="your-super-secret-key-here"
@@ -234,7 +231,7 @@
    
    # Stripe (Optional)
    STRIPE_SECRET_KEY="your-stripe-secret-key"
-   STRIPE_PUBLISHABLE_KEY="your-stripe-publishable-key"
+    STRIPE_PUBLISHABLE_KEY="your-stripe-publishable-key"
    ```
 
 4. **Database Setup**

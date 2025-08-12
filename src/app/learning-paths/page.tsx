@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
@@ -167,8 +168,8 @@ export default function LearningPathsPage() {
             </div>
 
             <div className="space-y-4">
-              {mockLearningPaths.map((path) => (
-                <Card key={path.id} className="hover:shadow-md transition-shadow honey-card">
+                {mockLearningPaths.map((path) => (
+                  <Card key={path.id} className="hover:shadow-md transition-shadow honey-card">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
@@ -231,8 +232,8 @@ export default function LearningPathsPage() {
             </div>
 
             <div className="space-y-4">
-              {mockCohorts.map((cohort) => (
-                <Card key={cohort.id} className="hover:shadow-md transition-shadow">
+                {mockCohorts.map((cohort) => (
+                  <Card key={cohort.id} className="hover:shadow-md transition-shadow honey-card">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div>
