@@ -71,7 +71,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable} dark`}>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground relative z-0">
         {/* 
           🔐 Authentication Provider
           Provides NextAuth.js session context to all child components
@@ -102,14 +102,18 @@ export default function RootLayout({
                 Persistent navigation across all pages
                 Handles authentication state display and routing
               */}
-              <NavigationBar />
+              <div className="relative z-20">
+                <NavigationBar />
+              </div>
               
               {/* 
                 📄 Page Content
                 Dynamic content rendered by Next.js App Router
                 Each page component is rendered here based on URL
               */}
-              {children}
+              <div className="relative z-10">
+                {children}
+              </div>
             </Suspense>
           </TRPCReactProvider>
         </AuthProvider>
